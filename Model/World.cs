@@ -15,7 +15,12 @@ namespace Model
 
         private static readonly Object lockObject = new Object();
         private static World instance = null;
-        private World() { }
+        private World()
+        {
+            Persons = new ObservableCollection<Person>();
+            Persons.Add(new Person());
+            Persons.Add(new Person());
+        }
         public static World Instance
         {
             get
