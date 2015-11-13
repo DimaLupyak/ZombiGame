@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Model.Objects
 {
-    abstract class GameObject
+    class Person
     {
-        int X { get; set; }
-        int Y { get; set; }
     }
 }
