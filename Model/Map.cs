@@ -10,7 +10,6 @@ namespace Model
     class Map
     {
         private AreaType[,] areas { get; set; }
-        //aaa
         #region Singleton
 
             private static readonly Object lockObject = new Object();
