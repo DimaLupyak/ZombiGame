@@ -10,7 +10,7 @@
         <ItemsControl  ItemsSource="{Binding Path=World.Persons,Mode=TwoWay}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate >
-                    <Image>
+                    <Image Source="Images/4405466.png">
                         <Image.OpacityMask>
                             <ImageBrush/>
                         </Image.OpacityMask>
