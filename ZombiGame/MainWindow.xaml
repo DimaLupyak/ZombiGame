@@ -7,13 +7,14 @@
         mc:Ignorable="d"
         Title="Monster War" Height="350" Width="525" WindowState="Maximized">
     <Grid>
+        
         <ItemsControl  ItemsSource="{Binding Path=World.Persons,Mode=TwoWay}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate >
                     <Canvas Height="Auto" Name="Canvas1" Width="Auto">
                         <Image Source="Images/4405466.png" Canvas.Top="5" Canvas.Left="5" Width="100" Height="100">
                             <Image.OpacityMask>
-                                <ImageBrush ImageSource="Images/4405466.png"/>
+                            <ImageBrush ImageSource="Images/4405466.png"/>
                             </Image.OpacityMask>
                         </Image>
                     </Canvas>
