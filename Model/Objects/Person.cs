@@ -7,7 +7,7 @@ using Model.EventArgument;
 
 namespace Model.Objects
 {
-    class Person : GameObject
+    public class Person : GameObject
     {
         private String heroName { set; get; }
         private int helthPoint { set; get; }

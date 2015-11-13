@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.Objects
 {
-    class Bonus
+    public class Bonus
     {
     }
 }
