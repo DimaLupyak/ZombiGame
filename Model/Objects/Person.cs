@@ -23,7 +23,14 @@ namespace Model.Objects
         private int range { set; get; }
         private AttackStyle attackStyle { get; set; }
         private Side team { set; get; }
-        
+
+        public Person(int helthPoint, int x, int y, Side team) 
+        {
+            this.helthPoint = helthPoint;
+            this.X = x;
+            this.Y = y;
+            this.team = team;
+        }
 
         private bool isAlive() {
             if (helthPoint <= 0)
@@ -67,9 +74,10 @@ namespace Model.Objects
 
         public void Live()
         {
-            
-            Move(World.Instance.Persons);
-            
+            while (isAlive())
+            {
+                Move(World.Instance.Persons);
+            }
         }
 
     }

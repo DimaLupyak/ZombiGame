@@ -18,8 +18,13 @@ namespace Model
         private World()
         {
             Persons = new ObservableCollection<Person>();
-            Persons.Add(new Person());
-            Persons.Add(new Person());
+            Person firstPersone = new Person(50, 1, 1, Side.Left);
+            Person secondPerson = new Person(20, 5, 5, Side.Right);
+            Persons.Add(firstPersone);
+            Persons.Add(secondPerson);
+
+           // Thread threadPersoneFirst = new Thread();
+
         }
         public static World Instance
         {
