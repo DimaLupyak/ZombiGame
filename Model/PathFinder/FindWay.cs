@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 
-namespace ConsoleApplication1
+namespace PathFinder
 {
 
     public class FindWay

@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.EventArgument;
+using System.Drawing;
+using PathFinder;
+using Model;
+using System.Collections.ObjectModel;
+
 
 namespace Model.Objects
 {
@@ -18,8 +23,39 @@ namespace Model.Objects
         private int range { set; get; }
         private AttackStyle attackStyle { get; set; }
         private Side team { set; get; }
+        
 
+        private bool isAlive() {
+            if (helthPoint <= 0)
+            {
+                return false;
+            }
+            else
+                return true;
+           
+        }
 
+        private void Move(ObservableCollection<Person> Persons)
+        {
+            List<Point> CurentPoints = new List<Point>();
+            int minCount = 1000;
+            Point bestStep = new Point();
+            foreach(Person person in Persons)
+            {
+                if ((this.X == person.X) && (person.Y == this.Y) && this.team != person.team)
+                {
+                    Map map = Map.Instance;
+
+                    CurentPoints = FindWay.FindPath(map.ways, new Point(this.X, this.Y), new Point(person.X, person.Y));
+                    if (CurentPoints.Count < minCount)
+                    {
+                        bestStep = CurentPoints.First();
+                    }
+                }
+            }
+            this.X = bestStep.X;
+            this.Y = bestStep.Y;
+        }
 
         public event EventHandler<EnemyAttack_Event> AttackEnemy;
 
@@ -31,7 +67,10 @@ namespace Model.Objects
 
         public void Live()
         {
-
+            
+            Move(World.Instance.Persons);
+            
         }
+
     }
 }
