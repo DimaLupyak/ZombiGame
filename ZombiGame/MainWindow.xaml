@@ -7,11 +7,14 @@
         mc:Ignorable="d"
         Title="Monster War" Height="350" Width="525" WindowState="Maximized">
     <Grid>
-        <ItemsControl  ItemsSource="{Binding Path=Persons,Mode=TwoWay}">
+        <ItemsControl  ItemsSource="{Binding Path=World.Persons,Mode=TwoWay}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate >
-                    <Rectangle Stroke="Black" Height="100" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    </Rectangle>
+                    <Image>
+                        <Image.OpacityMask>
+                            <ImageBrush/>
+                        </Image.OpacityMask>
+                    </Image>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
