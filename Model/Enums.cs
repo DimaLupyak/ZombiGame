@@ -13,8 +13,4 @@ namespace Model
         Hill,
         Swamp
     };
-    static class Enums
-    {
-        
-    }
 }

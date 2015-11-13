@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Person
+    class GameObject
     {
+        int X { get; set; }
+        int Y { get; set; }
     }
 }
