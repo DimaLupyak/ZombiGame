@@ -6,15 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    enum AreaType
+    class Person
     {
-        Grass,
-        Water,
-        Hill,
-        Swamp
-    };
-    static class Enums
-    {
-        
     }
 }
