@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZombiGame", "ZombiGame\ZombiGame.csproj", "{784BC1A5-8856-4BFE-927D-68EE67542AA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{529DFE24-9D09-40B9-8FEB-DDCB630885ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{1DD1768D-9261-44FD-84FD-98A48864FD5C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{784BC1A5-8856-4BFE-927D-68EE67542AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{784BC1A5-8856-4BFE-927D-68EE67542AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{784BC1A5-8856-4BFE-927D-68EE67542AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{784BC1A5-8856-4BFE-927D-68EE67542AA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{529DFE24-9D09-40B9-8FEB-DDCB630885ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{529DFE24-9D09-40B9-8FEB-DDCB630885ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{529DFE24-9D09-40B9-8FEB-DDCB630885ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{529DFE24-9D09-40B9-8FEB-DDCB630885ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DD1768D-9261-44FD-84FD-98A48864FD5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DD1768D-9261-44FD-84FD-98A48864FD5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DD1768D-9261-44FD-84FD-98A48864FD5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DD1768D-9261-44FD-84FD-98A48864FD5C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
