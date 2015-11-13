@@ -10,7 +10,7 @@ namespace Model
     class Map
     {
         private AreaType[,] areas { get; set; }
-        public int[,] ways {get;}
+        public int[,] ways { get; private set; }
         #region Singleton
 
         private static readonly Object lockObject = new Object();
