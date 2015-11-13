@@ -23,9 +23,3 @@ C:\Users\Roma\Desktop\Hackaton\ZombiGame\obj\Debug\ZombiGame.Properties.Resource
 C:\Users\Roma\Desktop\Hackaton\ZombiGame\obj\Debug\ZombiGame.csproj.GenerateResource.Cache
 C:\Users\Roma\Desktop\Hackaton\ZombiGame\obj\Debug\ZombiGame.exe
 C:\Users\Roma\Desktop\Hackaton\ZombiGame\obj\Debug\ZombiGame.pdb
-C:\Users\Oleksii\Desktop\4\ZombiGame\bin\Debug\ZombiGame.exe.config
-C:\Users\Oleksii\Desktop\4\ZombiGame\obj\Debug\ZombiGame.csprojResolveAssemblyReference.cache
-C:\Users\Oleksii\Desktop\4\ZombiGame\obj\Debug\MainWindow.g.cs
-C:\Users\Oleksii\Desktop\4\ZombiGame\obj\Debug\App.g.cs
-C:\Users\Oleksii\Desktop\4\ZombiGame\obj\Debug\ZombiGame_MarkupCompile.cache
-C:\Users\Oleksii\Desktop\4\ZombiGame\obj\Debug\ZombiGame_MarkupCompile.lref
