@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="Enums.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="Objects\Bonus.cs" />
     <Compile Include="Objects\GameObject.cs" />
+    <Compile Include="Objects\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
