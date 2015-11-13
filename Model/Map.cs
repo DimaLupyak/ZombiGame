@@ -10,12 +10,15 @@ namespace Model
     class Map
     {
         private AreaType[,] areas { get; set; }
+        public int[,] ways {get;}
         #region Singleton
 
             private static readonly Object lockObject = new Object();
         private static Map instance = null;
         private Map()
         {
+            areas = new AreaType[100, 100];
+            ways = new int[100, 100];
         }
         public static Map Instance
         {
@@ -30,7 +33,11 @@ namespace Model
             }
         }
         #endregion
-        
-        
+
+        public void SetLand(int x, int y, AreaType land)
+        {
+            areas[x, y] = land;
+            ways[x, y] = (int)land;
+        }        
     }
 }

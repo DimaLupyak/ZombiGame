@@ -1,2 +1,3 @@
 D:\Programming\VisualStudioProjects\Delphi\ASP.NET\ZombiGame\ZombiGame\bin\Debug\ZombiGame.exe.config
 D:\Programming\VisualStudioProjects\ZombiGame\ZombiGame\bin\Debug\ZombiGame.exe.config
+C:\Users\Roma\Desktop\Спрайти\Game\ZombiGame\bin\Debug\ZombiGame.exe.config
