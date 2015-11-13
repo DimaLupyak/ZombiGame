@@ -8,7 +8,7 @@ using Model.Objects;
 
 namespace Model
 {
-    class World
+    public class World
     {
         #region Singleton
 
