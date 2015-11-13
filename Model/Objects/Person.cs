@@ -19,6 +19,8 @@ namespace Model.Objects
         private AttackStyle attackStyle { get; set; }
         private Side team { set; get; }
 
+
+
         public event EventHandler<EnemyAttack_Event> AttackEnemy;
 
         public void TakingDamage(object sender, EnemyAttack_Event e)
@@ -29,6 +31,7 @@ namespace Model.Objects
 
         public void Live()
         {
+
         }
     }
 }
