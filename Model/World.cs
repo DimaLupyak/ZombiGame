@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Model.Objects;
 
 namespace Model
 {
@@ -28,6 +29,12 @@ namespace Model
         }
         #endregion
         private Map map;
+        private List<Person> units;
+
+        public List<Person> GetUnits()
+        {
+            return units;
+        }
 
 
     }

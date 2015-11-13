@@ -13,4 +13,16 @@ namespace Model
         Hill,
         Swamp
     };
+    
+    enum AttackStyle
+    {
+        Renge,
+        Mili
+    };
+
+    enum Side
+    {
+        Left,
+        Right
+    };
 }
