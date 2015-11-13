@@ -48,16 +48,20 @@ namespace ConsoleApplication1
                 PathLengthFromStart = 0,
                 HeuristicEstimatePathLength = GetHeuristicPathLength(start, goal)
             };
+            int i = 0;
             openSet.Add(startNode);
             while (openSet.Count > 0)
             {
                 // Шаг 3.
+                
                 var currentNode = openSet.OrderBy(node =>
                   node.EstimateFullPathLength).First();
                 // Шаг 4.
                 if (currentNode.Position == goal)
                 {
+                    
                     return GetPathForNode(currentNode);
+                  
                 }
                 // Шаг 5.
                 openSet.Remove(currentNode);
