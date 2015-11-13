@@ -13,7 +13,7 @@ namespace Model
         public int[,] ways {get;}
         #region Singleton
 
-            private static readonly Object lockObject = new Object();
+        private static readonly Object lockObject = new Object();
         private static Map instance = null;
         private Map()
         {
