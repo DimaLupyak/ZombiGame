@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Model.Objects;
+using System.Collections.ObjectModel;
 
 namespace Model
 {
@@ -29,12 +30,8 @@ namespace Model
         }
         #endregion
         private Map map;
-        private List<Person> units;
+        public ObservableCollection<Person> Persons { get; set; }
 
-        public List<Person> GetUnits()
-        {
-            return units;
-        }
 
 
     }
