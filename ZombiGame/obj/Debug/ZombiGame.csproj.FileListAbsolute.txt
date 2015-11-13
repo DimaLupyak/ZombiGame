@@ -5,3 +5,4 @@ E:\git2\ZombiGame\bin\Debug\ZombiGame.exe.config
 E:\git2\ZombiGame\obj\Debug\ZombiGame.exe
 E:\git2\ZombiGame\obj\Debug\ZombiGame.pdb
 D:\Programming\VisualStudioProjects\Hackaton\ZombiGame\bin\Debug\ZombiGame.exe.config
+C:\Users\Roma\Desktop\Hackaton\ZombiGame\bin\Debug\ZombiGame.exe.config

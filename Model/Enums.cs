@@ -25,4 +25,11 @@ namespace Model
         Left,
         Right
     };
+
+    enum BonusType
+    {
+        Armor,
+        DoubleDamage,
+        MoveSpead,
+    };
 }
