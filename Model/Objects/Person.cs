@@ -8,28 +8,62 @@ using System.Drawing;
 using PathFinder;
 using Model;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Threading;
 
-
-namespace Model.Objects
+namespace Model.Objects 
 {
-    public class Person : GameObject
+    public class Person : GameObject, INotifyPropertyChanged
     {
-        public String HeroName { set; get; }
-        public int HelthPoint { set; get; }
-        public int Damage { set; get; }
-        public int Armor { set; get; }
-        public int MoveSpead { set; get; }
-        public int Mana { set; get; }
-        public int Range { set; get; }
-        public AttackStyle AttackStyle { get; set; }
-        public Side Team { set; get; }
+        protected String heroName;
+        protected int helthPoint;
+        protected int damage;
+        protected int armor;
+        protected int moveSpead;
+        protected int mana;
+        protected int range;
+        protected AttackStyle attackStyle;
+        protected Side team;
+
+        public int HelthPoint
+        {
+            get { return helthPoint; }
+            set
+            {
+                helthPoint = value;
+                OnPropertyChanged("HelthPoint");
+
+            }
+        }
+
+        public int X
+        {
+            get { return x; }
+            set
+            {
+                x = value;
+                OnPropertyChanged("X");
+
+            }
+        }
+
+        public int Y
+        {
+            get { return y; }
+            set
+            {
+                y = value;
+                OnPropertyChanged("Y");
+
+            }
+        }
 
         public Person(int helthPoint, int x, int y, Side team) 
         {
             this.HelthPoint = helthPoint;
-            this.X = x;
-            this.Y = y;
-            this.Team = team;
+            this.x = x;
+            this.y = y;
+            this.team = team;
         }
 
         private bool isAlive() {
@@ -49,26 +83,26 @@ namespace Model.Objects
             Point bestStep = new Point();
             foreach(Person person in Persons)
             {
-                if ((this.X == person.X) && (person.Y == this.Y) && this.Team != person.Team)
+                if ((this.x == person.x) && (person.y == this.y) && this.team != person.team)
                 {
                     Map map = Map.Instance;
 
-                    CurentPoints = FindWay.FindPath(map.ways, new Point(this.X, this.Y), new Point(person.X, person.Y));
+                    CurentPoints = FindWay.FindPath(map.ways, new Point(this.x, this.y), new Point(person.x, person.y));
                     if (CurentPoints.Count < minCount)
                     {
                         bestStep = CurentPoints.First();
                     }
                 }
             }
-            this.X = bestStep.X;
-            this.Y = bestStep.Y;
+            this.x = bestStep.X;
+            this.y = bestStep.Y;
         }
 
         public event EventHandler<EnemyAttack_Event> AttackEnemy;
 
         public void TakingDamage(object sender, EnemyAttack_Event e)
         {
-            int realDamage = e.getEnemyDamage() - Armor / 10;
+            int realDamage = e.getEnemyDamage() - armor / 10;
             HelthPoint -= realDamage;
         }
 
@@ -79,8 +113,23 @@ namespace Model.Objects
             while (isAlive())
             {
                 Move(World.Instance.Persons);
+                Thread.Sleep(1000);
             }
         }
+
+        #region Implement INotyfyPropertyChanged members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
 
     }
 }

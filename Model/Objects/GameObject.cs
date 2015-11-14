@@ -8,7 +8,7 @@ namespace Model
 {
     public abstract class GameObject
     {
-        protected int X { get; set; }
-        protected int Y { get; set; }
+        protected int x;
+        protected int y;
     }
 }
