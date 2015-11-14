@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 
-namespace PathFinder
+namespace Model
 {
 
     public class FindWay
@@ -35,7 +35,7 @@ namespace PathFinder
         }
 
         // класс для вычисления маршрута.
-        public static List<Point> FindPath(int[,] field, Point start, Point goal)
+        public static List<Point> FindPath(AreaType[,] field, Point start, Point goal)
         {
             // Шаг 1.
             var closedSet = new Collection<PathNode>();
@@ -52,11 +52,11 @@ namespace PathFinder
             while (openSet.Count > 0)
             {
                 // Шаг 3.
-                
+
                 var currentNode = openSet.OrderBy(node =>
                   node.EstimateFullPathLength).First();
                 // Шаг 4.
-                if (currentNode.Position == goal)
+                if (currentNode.Position == goal || GetHeuristicPathLength(currentNode.Position, start) > 10)
                 {
                     
                     return GetPathForNode(currentNode);
@@ -106,26 +106,29 @@ namespace PathFinder
 
         //списка соседей для точки:
         private static Collection<PathNode> GetNeighbours(PathNode pathNode,
-          Point goal, int[,] field)
+          Point goal, AreaType[,] field)
         {
             var result = new Collection<PathNode>();
 
             // Соседними точками являются соседние по стороне клетки.
-            Point[] neighbourPoints = new Point[4];
+            Point[] neighbourPoints = new Point[8];
             neighbourPoints[0] = new Point(pathNode.Position.X + 1, pathNode.Position.Y);
             neighbourPoints[1] = new Point(pathNode.Position.X - 1, pathNode.Position.Y);
             neighbourPoints[2] = new Point(pathNode.Position.X, pathNode.Position.Y + 1);
             neighbourPoints[3] = new Point(pathNode.Position.X, pathNode.Position.Y - 1);
-
+            neighbourPoints[4] = new Point(pathNode.Position.X + 1, pathNode.Position.Y+1);
+            neighbourPoints[5] = new Point(pathNode.Position.X - 1, pathNode.Position.Y-1);
+            neighbourPoints[6] = new Point(pathNode.Position.X-1, pathNode.Position.Y + 1);
+            neighbourPoints[7] = new Point(pathNode.Position.X+1, pathNode.Position.Y - 1);
             foreach (var point in neighbourPoints)
             {
                 // Проверяем, что не вышли за границы карты.
-                if (point.X < 0 || point.X >= field.GetLength(0))
+                if (point.X < 0 || point.X >= field.GetLength(0)*10)
                     continue;
-                if (point.Y < 0 || point.Y >= field.GetLength(1))
+                if (point.Y < 0 || point.Y >= field.GetLength(1)*10)
                     continue;
                 // Проверяем, что по клетке можно ходить.
-                if ((field[point.X, point.Y] == 0))
+                if ((field[(int)point.X/10, (int)point.Y/10]== AreaType.Water))
                     continue;
                 // Заполняем данные для точки маршрута.
                 var neighbourNode = new PathNode()

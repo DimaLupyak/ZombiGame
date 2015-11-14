@@ -13,7 +13,7 @@ namespace Model
 {
     public class World
     {
-       
+
 
        // delegate void Live();
 
@@ -27,13 +27,27 @@ namespace Model
             Map = Map.Instance;
             Persons = new ObservableCollection<Person>();
             Random rnd = new Random();
-            for (int i = 0; i < 6; i++)
+            int x;
+            int y;
+            for (int i = 0; i < 4; i++)
             {
-                Persons.Add(new Person(50, rnd.Next(0, 100), rnd.Next(0, 1000), (Side)0));
+                do
+                {
+                    x = rnd.Next(0, 10);
+                    y = rnd.Next(0, 99);
+                } while(Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
+
+                Persons.Add(new Person(50, x, y, (Side)0));
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
+            {                
+                do
             {
-                Persons.Add(new Person(50, rnd.Next(900, 1000), rnd.Next(0, 1000), (Side)1));
+                    x = rnd.Next(90, 99);
+                    y = rnd.Next(0, 99);
+                } while (Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
+
+                Persons.Add(new Person(50, x, y, (Side)1));
             }
 
             ThreadManager.StartSread(Persons);
@@ -59,7 +73,7 @@ namespace Model
                 catch(Exception e) { }
             }
         }
-       
+
         #region Singleton
         public static World Instance
         {

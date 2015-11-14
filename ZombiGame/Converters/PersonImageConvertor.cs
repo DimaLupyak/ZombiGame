@@ -29,13 +29,13 @@ namespace ZombiGame.Converters
             else if (parameter.ToString() == "Y")
             {
                 int y = (int)value;
-                return SystemParameters.WorkArea.Height / 1000 * y;
+                return SystemParameters.WorkArea.Height / 100 * y;
             }
             else if (parameter.ToString() == "X")
             {
                 int x = (int)value;
                 int mergine = (int)(SystemParameters.WorkArea.Width - SystemParameters.WorkArea.Height) / 2;
-                return mergine + SystemParameters.WorkArea.Height / 1000 * x;
+                return mergine + SystemParameters.WorkArea.Height / 100 * x;
             }
             return DependencyProperty.UnsetValue;
         }
