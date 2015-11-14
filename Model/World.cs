@@ -66,7 +66,7 @@ namespace Model
                     y = rnd.Next(0, 99);
                 } while (Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
 
-                Persons.Add(new Person(50, x, y, (Side)0));
+                Persons.Add(new Person(100, x, y, (Side)0));
             }
             for (int i = 0; i < 4; i++)
             {
@@ -76,7 +76,7 @@ namespace Model
                     y = rnd.Next(0, 99);
                 } while (Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
 
-                Persons.Add(new Person(50, x, y, (Side)1));
+                Persons.Add(new Person(100, x, y, (Side)1));
             }
         }
 
