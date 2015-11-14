@@ -30,27 +30,11 @@ namespace Model
             CreateUnite();
 
             ThreadManager.StartSread(Persons);
-
-            ThreadPool.QueueUserWorkItem(new WaitCallback(Looker));
         }
         
-        private void Looker(Object stateInfo)
+        private void RemoveUnitEvent(object sender, EventArgs e)
         {
-            while (true)
-            {
-                try
-                {
-                    foreach (Person unit in Persons)
-                    {
-                        if (unit.HelthPoint <= 0)
-                        {
-                            Application.Current.Dispatcher.BeginInvoke(new Func<bool>(() => Persons.Remove(unit)));
-                            break;
-                        }
-                    }
-                }
-                catch(Exception e) { }
-            }
+            Application.Current.Dispatcher.BeginInvoke(new Func<bool>(() => Persons.Remove((Person)sender)));   
         }
 
         public void CreateUnite()
@@ -67,6 +51,7 @@ namespace Model
                 } while (Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
 
                 Persons.Add(new Person(100, x, y, (Side)0));
+                Persons[i].RemoveMe += RemoveUnitEvent;
             }
             for (int i = 0; i < 4; i++)
             {
@@ -75,8 +60,9 @@ namespace Model
                     x = rnd.Next(90, 99);
                     y = rnd.Next(0, 99);
                 } while (Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
-
-                Persons.Add(new Person(100, x, y, (Side)1));
+                Person person = new Person(100, x, y, (Side)1);
+                person.RemoveMe += RemoveUnitEvent;
+                Persons.Add(person);
             }
         }
 
