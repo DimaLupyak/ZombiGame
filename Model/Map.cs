@@ -10,7 +10,7 @@ namespace Model
 {
     class Map
     {
-        //private AreaType[,] areas { get; set; }
+        private AreaType[,] areas { get; set; }
         public int[,] ways { get; private set; }
         #region Singleton
 
@@ -18,10 +18,8 @@ namespace Model
         private static Map instance = null;
         private Map()
         {
-            //areas = new AreaType[100, 100];
-            ways = new int[1000, 1000];
+            //areas = new AreaType[100, 100];;
             ways = GenMap(1000, 1000);
-            MessageBox.Show(ways[2,4].ToString(), "gdsg", MessageBoxButtons.OK);
         }
       
         
@@ -52,7 +50,7 @@ namespace Model
                 for (int o = 0; o < y; o++) 
                 {
                     
-                    a[i, o]=rnd.Next(0,0);
+                    a[i, o]=rnd.Next(0,10);
                 }
 
             return a;

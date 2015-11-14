@@ -12,9 +12,9 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate >
                     <Canvas Height="Auto" Name="Canvas1" Width="Auto">
-                        <Image Source="Images/4405466.png" Canvas.Top="{Binding Y}" Canvas.Left="{Binding X}" Width="100" Height="100">
+                        <Image Source="Images/Grass.png" Canvas.Top="{Binding Y}" Canvas.Left="{Binding X}" Width="10" Height="10">
                             <Image.OpacityMask>
-                            <ImageBrush ImageSource="Images/4405466.png"/>
+                                <ImageBrush ImageSource="Images/Grass.png"/>
                             </Image.OpacityMask>
                         </Image>
                     </Canvas>

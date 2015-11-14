@@ -88,14 +88,15 @@ namespace Model.Objects
                     Map map = Map.Instance;
 
                     CurentPoints = FindWay.FindPath(map.ways, new Point(this.x, this.y), new Point(person.x, person.y));
+                    if (CurentPoints == null) break;
                     if (CurentPoints.Count != 0 && CurentPoints.Count < minCount)
                     {
-                        bestStep = CurentPoints.First();
+                        bestStep = CurentPoints[1];
                     }
                 }
             }
-            this.x = bestStep.X;
-            this.y = bestStep.Y;
+            this.X = bestStep.X;
+            this.Y = bestStep.Y;
         }
 
         public event EventHandler<EnemyAttack_Event> AttackEnemy;
@@ -113,7 +114,6 @@ namespace Model.Objects
             while (isAlive())
             {
                 Move(World.Instance.Persons);
-                Thread.Sleep(1000);
             }
         }
 

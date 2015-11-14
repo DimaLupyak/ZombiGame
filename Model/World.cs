@@ -24,16 +24,19 @@ namespace Model
         {
             map = Map.Instance;
             Persons = new ObservableCollection<Person>();
-            Person firstPersone = new Person(50, 1, 1, Side.Left);
-            Person secondPerson = new Person(20, 500, 100, Side.Right);
+            Person firstPersone = new Person(50, 0, 0, Side.Left);
+            Person secondPerson = new Person(20, 99, 99, Side.Right);
+            Person secondPerson3 = new Person(20, 0, 99, Side.Right);
             Persons.Add(firstPersone);
             Persons.Add(secondPerson);
-
+            Persons.Add(secondPerson3);
             Thread threadPersoneFirst = new Thread(new ThreadStart(firstPersone.Live));
             threadPersoneFirst.Start();
 
             Thread threadPersoneSecond = new Thread(new ThreadStart(secondPerson.Live));
             threadPersoneSecond.Start();
+            Thread threadPersoneFirst3 = new Thread(new ThreadStart(secondPerson3.Live));
+            threadPersoneFirst3.Start();
         }
 
 
