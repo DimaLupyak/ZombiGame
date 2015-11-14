@@ -54,7 +54,7 @@ namespace Model
 
             ThreadPool.QueueUserWorkItem(new WaitCallback(Looker));
         }
-
+        //
         private void Looker(Object stateInfo)
         {
             while (true)
