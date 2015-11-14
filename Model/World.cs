@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Model.Objects;
 using System.Collections.ObjectModel;
+using Model.EventArgument;
+using System.Windows;
 
 namespace Model
 {
@@ -20,12 +22,16 @@ namespace Model
 
         public Map Map { get; set; }
         public ObservableCollection<Person> Persons { get; set; }
+
+        private event EventHandler<LookerEventArgs> Remove;
         private World()
         {
             Map = Map.Instance;
             Persons = new ObservableCollection<Person>();
+
+            Remove += RemovekEvent;
             Random rnd = new Random();
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 6; i++)
             {
                 Persons.Add(new Person(50, rnd.Next(0, 800), rnd.Next(0, 500), (Side)rnd.Next(0, 2)));
             }
@@ -37,21 +43,36 @@ namespace Model
             {
                 ThreadPool.QueueUserWorkItem(new WaitCallback(person.Live));
             }
-            new Thread(Looker);
+            ThreadPool.QueueUserWorkItem(new WaitCallback(Looker));
         }
 
-        private void Looker()
+        private void Looker(Object stateInfo)
         {
             while (true)
             {
-                foreach(Person unit in Persons)
+                try
                 {
-                    if(unit.HelthPoint <= 0)
+                    foreach (Person unit in Persons)
                     {
-                        Persons.Remove(unit);
+                        if (unit.HelthPoint <= 0)
+                        {
+                            Application.Current.Dispatcher.BeginInvoke(new Func<bool>(() => Persons.Remove(unit)));
+                            break;
+                            //Remove(this, new LookerEventArgs(unit));
+                        }
                     }
                 }
+                catch(Exception e) { }
             }
+        }
+
+        private void RemovekEvent(object sender, LookerEventArgs e)
+        {
+            Application.Current.Dispatcher.BeginInvoke(new Func<bool>(() =>
+            
+                Persons.Remove(e.removeUnit)
+            ));
+                    
         }
 
         public static World Instance

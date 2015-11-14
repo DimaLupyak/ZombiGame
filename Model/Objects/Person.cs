@@ -161,16 +161,18 @@ namespace Model.Objects
                 //{
                     Goal = FindGoal(World.Instance.Persons);
                 //}
-                if ((X == Goal.X) && (Y == Goal.Y))  
-                {
-                    AttackEnemy += Goal.TakingDamage;
-                    AttackEnemy(this, new EnemyAttack_Event(damage)); 
+                if (Goal != null)
+                { 
+                    if ((X == Goal.X) && (Y == Goal.Y))  
+                    {
+                        AttackEnemy += Goal.TakingDamage;
+                        AttackEnemy(this, new EnemyAttack_Event(damage)); 
+                    }
+                    else
+                    {
+                        Move();
+                    }
                 }
-                else
-                {
-                    Move();
-                }
-                
                 Thread.Sleep(20);
                 //Move(World.Instance.Persons);
             }
