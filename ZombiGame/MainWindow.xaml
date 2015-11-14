@@ -6,7 +6,8 @@
         xmlns:converters="clr-namespace:ZombiGame.Converters;assembly="
         xmlns:local="clr-namespace:ZombiGame"
         mc:Ignorable="d"
-        Title="Monster War" Height="350" Width="525" WindowState="Maximized">
+        Title="Monster War" Height="350" Width="525" WindowState="Maximized" Background="Black"
+        WindowStyle="None" ResizeMode="NoResize">
     <Window.Resources>
         <converters:PersonImageConvertor x:Key="personImageConvertor"/>
         <converters:MapAreaImageConvertor x:Key="mapAreaImageConvertor"/>
@@ -15,7 +16,7 @@
         <ItemsControl  ItemsSource="{Binding Path=World.Map.MapArias,Mode=TwoWay}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate >
-                    <Canvas Height="Auto" Name="PersonCanvas" Width="Auto">
+                    <Canvas Height="Auto" Name="AreaCanvas" Width="Auto">
                         <Image Source="{Binding AreaType, ConverterParameter=Type , Converter={StaticResource mapAreaImageConvertor}}"  
                                Canvas.Top="{Binding Y, ConverterParameter=Y , Converter={StaticResource mapAreaImageConvertor}}" 
                                Canvas.Left="{Binding X, ConverterParameter=X , Converter={StaticResource mapAreaImageConvertor}}" 
@@ -31,8 +32,10 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate >
                     <Canvas Height="Auto" Name="PersonCanvas" Width="Auto">
-                        <Image Source="{Binding Team, Converter={StaticResource personImageConvertor}}"  
-                               Canvas.Top="{Binding Y}" Canvas.Left="{Binding X}" Width="10" Height="10">                            
+                        <Image Source="{Binding Team, ConverterParameter=Type, Converter={StaticResource personImageConvertor}}"  
+                               Canvas.Top="{Binding Y, ConverterParameter=Y , Converter={StaticResource personImageConvertor}}" 
+                               Canvas.Left="{Binding X, ConverterParameter=X , Converter={StaticResource personImageConvertor}}" 
+                               Width="25" Height="25">                            
                         </Image>
                     </Canvas>
                 </DataTemplate>

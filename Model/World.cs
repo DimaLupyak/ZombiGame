@@ -25,9 +25,13 @@ namespace Model
             Map = Map.Instance;
             Persons = new ObservableCollection<Person>();
             Random rnd = new Random();
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 5; i++)
             {
-                Persons.Add(new Person(50, rnd.Next(0, 800), rnd.Next(0, 500), (Side)rnd.Next(0, 2)));
+                Persons.Add(new Person(50, rnd.Next(0, 100), rnd.Next(0, 1000), (Side)0));
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                Persons.Add(new Person(50, rnd.Next(900, 1000), rnd.Next(0, 1000), (Side)1));
             }
             //Persons.Add(new Person(50, 0, 0, Side.Left));
             //Persons.Add(new Person(50, 500, 200, Side.Right));

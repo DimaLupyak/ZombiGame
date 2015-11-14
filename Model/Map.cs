@@ -94,12 +94,12 @@ namespace Model
                 }
                 if (checkSumX == 10)
                 {
-                    int j = rnd.Next(0, 99);
+                    int j = rnd.Next(0, 9);
                     map[i, j] = (AreaType)0;
                 }
                 if (checkSumY == 10)
                 {
-                    int j = rnd.Next(0, 99);
+                    int j = rnd.Next(0, 9);
                     map[j, i] = (AreaType)0;
                 }
                 }

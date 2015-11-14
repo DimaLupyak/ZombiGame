@@ -14,16 +14,30 @@ namespace ZombiGame.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            Side side = (Side)value;
-            if (side == Side.Left)
+            if (parameter.ToString() == "Type")
             {
-                return "Images/Left.jpg";
+                Side side = (Side)value;
+                if (side == Side.Left)
+                {
+                    return "Images/Left.jpg";
+                }
+                else
+                {
+                    return "Images/Right.jpg";
+                }
             }
-            else
+            else if (parameter.ToString() == "Y")
             {
-                return "Images/Right.jpg";
+                int y = (int)value;
+                return SystemParameters.WorkArea.Height / 1000 * y;
             }
-            
+            else if (parameter.ToString() == "X")
+            {
+                int x = (int)value;
+                int mergine = (int)(SystemParameters.WorkArea.Width - SystemParameters.WorkArea.Height) / 2;
+                return mergine + SystemParameters.WorkArea.Height / 1000 * x;
+            }
+            return DependencyProperty.UnsetValue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
