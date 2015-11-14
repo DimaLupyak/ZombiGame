@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Model
 {
@@ -11,6 +12,7 @@ namespace Model
     {
 
         public AreaType AreaType { get; set; }
+        public int Size { get; private set; }
         #region Implement INotyfyPropertyChanged members
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -29,6 +31,7 @@ namespace Model
             X = x;
             Y = y;
             AreaType = type;
+            Size = (int)SystemInformation.VirtualScreen.Height / 10;
         }
     }
 }

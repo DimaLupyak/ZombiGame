@@ -25,12 +25,12 @@ namespace Model.Objects
         protected int mana;
         protected int range;
         protected AttackStyle attackStyle;
-        private bool whatToDo = false;
 
         #endregion
         #region Properties
         public Side Team { get; set; }
         public Person Goal { get; set; }
+        public int Size { get; private set; }
         new public int X
         {
             get { return x; }
@@ -41,7 +41,7 @@ namespace Model.Objects
 
             }
         }
-
+        
         new public int Y
         {
             get { return y; }
@@ -72,6 +72,8 @@ namespace Model.Objects
             this.y = y;
             this.Team = team;
             this.damage = 20;
+            Size = (int) SystemInformation.VirtualScreen.Height / 20;
+
         }
 
         private bool isAlive() {
@@ -134,23 +136,13 @@ namespace Model.Objects
         }
 
         public event EventHandler<EnemyAttack_Event> AttackEnemy;
-        private event EventHandler Vin;
         public void TakingDamage(object sender, EnemyAttack_Event e)
         {
             int realDamage = e.getEnemyDamage() - armor / 10;
             HelthPoint -= realDamage;
-
-            if(HelthPoint <= 0)
-            {
-                Vin += (sender as Person).Vine;
-                Vin(this, new EventArgs());
-            }
+            
         }
-
-        public void Vine(object sender, EventArgs e)
-        {
-            whatToDo = false;
-        }
+        
 
 
         public void Live(Object stateInfo)
