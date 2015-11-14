@@ -109,6 +109,13 @@ namespace Model.Objects
         {
             int realDamage = e.getEnemyDamage() - armor / 10;
             HelthPoint -= realDamage;
+
+            if(HelthPoint <= 0)
+            {
+                EventArgs ex = new EventArgs();
+                if(RemoveMe != null)
+                    RemoveMe(this, ex);
+            }
             
         }
         
@@ -160,6 +167,7 @@ namespace Model.Objects
         #region Implement INotyfyPropertyChanged members
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler RemoveMe;
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
