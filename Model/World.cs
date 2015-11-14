@@ -13,7 +13,7 @@ namespace Model
 {
     public class World
     {
-        #region Singleton
+
 
        // delegate void Live();
 
@@ -22,14 +22,10 @@ namespace Model
 
         public Map Map { get; set; }
         public ObservableCollection<Person> Persons { get; set; }
-
-        private event EventHandler<LookerEventArgs> Remove;
         private World()
         {
             Map = Map.Instance;
             Persons = new ObservableCollection<Person>();
-
-            Remove += RemovekEvent;
             Random rnd = new Random();
             int x;
             int y;
@@ -46,17 +42,16 @@ namespace Model
             for (int i = 0; i < 4; i++)
             {                
                 do
-                {
+            {
                     x = rnd.Next(90, 99);
                     y = rnd.Next(0, 99);
                 } while (Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
 
                 Persons.Add(new Person(50, x, y, (Side)1));
             }
-            foreach (Person person in Persons)
-            {
-                ThreadPool.QueueUserWorkItem(new WaitCallback(person.Live));
-            }
+
+            ThreadManager.StartSread(Persons);
+
             ThreadPool.QueueUserWorkItem(new WaitCallback(Looker));
         }
 
@@ -79,15 +74,7 @@ namespace Model
             }
         }
 
-        private void RemovekEvent(object sender, LookerEventArgs e)
-        {
-            Application.Current.Dispatcher.BeginInvoke(new Func<bool>(() =>
-            
-                Persons.Remove(e.removeUnit)
-            ));
-                    
-        }
-
+        #region Singleton
         public static World Instance
         {
             get
@@ -101,9 +88,5 @@ namespace Model
             }
         }
         #endregion
-        
-
-
-
     }
 }

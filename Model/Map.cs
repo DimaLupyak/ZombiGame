@@ -102,7 +102,7 @@ namespace Model
                     int j = rnd.Next(0, 9);
                     map[j, i] = (AreaType)0;
                 }
-                }
+            }
             return map;
         }
     }
