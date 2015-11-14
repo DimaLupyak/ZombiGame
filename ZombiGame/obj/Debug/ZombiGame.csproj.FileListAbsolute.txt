@@ -81,3 +81,6 @@ D:\Programming\VisualStudioProjects\Zombie\ZombiGame\obj\Debug\GeneratedInternal
 C:\Users\Roma\Desktop\Hackaton\ZombiGame\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Programming\VisualStudioProjects\Zombie\ZombiGame\bin\Debug\WpfAnimatedGif.dll
 D:\Programming\VisualStudioProjects\Zombie\ZombiGame\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Roma\Desktop\Hakaton\ZombiGame\bin\Debug\ZombiGame.exe.config
+C:\Users\Roma\Desktop\Hakaton\ZombiGame\obj\Debug\ZombiGame.exe
+C:\Users\Roma\Desktop\Hakaton\ZombiGame\obj\Debug\ZombiGame.pdb

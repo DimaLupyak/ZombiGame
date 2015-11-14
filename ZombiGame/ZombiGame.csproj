@@ -129,10 +129,8 @@
     <Resource Include="Images\Right.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Animation.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Human.gif" />
+    <Resource Include="Images\man.gif" />
+    <Resource Include="Images\Zomb.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

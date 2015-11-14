@@ -15,7 +15,7 @@
     </Window.Resources>
     <Grid>
         <StackPanel>
-            <Button Content="start" Width="80" HorizontalAlignment="Left" Margin="10">
+            <Button Content="start" Width="80" HorizontalAlignment="Left" Margin="10" Command="{Binding StartGame}">
                 
             </Button>
         </StackPanel>
@@ -42,13 +42,12 @@
                         <Image gif:ImageBehavior.AnimatedSource="{Binding Team, ConverterParameter=Type, Converter={StaticResource personImageConvertor}}"
                                Canvas.Top="{Binding Y, ConverterParameter=Y , Converter={StaticResource personImageConvertor}}" 
                                Canvas.Left="{Binding X, ConverterParameter=X , Converter={StaticResource personImageConvertor}}" 
-                               Width="{Binding Size}" Height="{Binding Size}"
-                               Opacity="0.6">                            
+                               Width="{Binding Size}" Height="{Binding Size}">                            
                         </Image>
-                        <ProgressBar Value="{Binding HelthPoint}" Height="10" Width="{Binding Size}"
+                        <ProgressBar Value="{Binding HelthPoint}" Height="5" Width="{Binding Size}"
                             Canvas.Top="{Binding Y, ConverterParameter=Y , Converter={StaticResource personImageConvertor}}"
                             Canvas.Left="{Binding X, ConverterParameter=X , Converter={StaticResource personImageConvertor}}"
-                                     Opacity="0.8">
+                                     Opacity="0.8" Foreground="{Binding Team, ConverterParameter=Side , Converter={StaticResource personImageConvertor}}">
                             
                         </ProgressBar>
                     </Canvas>

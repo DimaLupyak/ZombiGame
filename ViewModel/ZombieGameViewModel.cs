@@ -22,9 +22,9 @@ namespace ViewModel
             StartGame = new Command(arg => StartGameClickMethod());
         }
 
-        private void StartGameClickMethod()
+        public void StartGameClickMethod()
         {
-            World.Instance.ToString();
+            World.StartGame();
         }
 
         public ICommand StartGame { get; set; }
