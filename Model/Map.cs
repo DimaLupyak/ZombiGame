@@ -34,11 +34,8 @@ namespace Model
         {
             get
             {
-                if (instance != null) return instance;
-                Monitor.Enter(lockObject);
-                Map temp = new Map();
-                Interlocked.Exchange(ref instance, temp);
-                Monitor.Exit(lockObject);
+                if (instance == null)
+                    instance = new Map();
                 return instance;
             }
         }
