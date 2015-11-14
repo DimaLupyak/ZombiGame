@@ -13,6 +13,8 @@ namespace Model
     {
         #region Singleton
 
+       // delegate void Live();
+
         private static readonly Object lockObject = new Object();
         private static World instance = null;
         private World()
@@ -23,9 +25,14 @@ namespace Model
             Persons.Add(firstPersone);
             Persons.Add(secondPerson);
 
-           // Thread threadPersoneFirst = new Thread();
+            Thread threadPersoneFirst = new Thread(new ThreadStart(firstPersone.Live));
+            threadPersoneFirst.Start();
 
+            Thread threadPersoneSecond = new Thread(new ThreadStart(secondPerson.Live));
+            threadPersoneSecond.Start();
         }
+
+
         public static World Instance
         {
             get

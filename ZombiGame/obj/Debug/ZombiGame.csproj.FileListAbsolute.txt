@@ -41,4 +41,3 @@ C:\Users\Oleksii\Desktop\4\ZombiGame\obj\Debug\ZombiGame.Properties.Resources.re
 C:\Users\Oleksii\Desktop\4\ZombiGame\obj\Debug\ZombiGame.csproj.GenerateResource.Cache
 C:\Users\Oleksii\Desktop\4\ZombiGame\obj\Debug\ZombiGame.exe
 C:\Users\Oleksii\Desktop\4\ZombiGame\obj\Debug\ZombiGame.pdb
-C:\Users\Roma\Desktop\Спрайти\Hackaton\ZombiGame\bin\Debug\ZombiGame.exe.config

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    enum AreaType
+    public enum AreaType
     {
-        Grass,
-        Water,
-        Hill,
-        Swamp
+        Grass=0,
+        Water=1,
+        Hill=2,
+        Swamp=3
     };
-    
-    enum AttackStyle
+
+    public enum AttackStyle
     {
         Renge,
         Mili
@@ -26,7 +26,7 @@ namespace Model
         Right
     };
 
-    enum BonusType
+    public enum BonusType
     {
         Armor,
         DoubleDamage,

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Model
 {
@@ -19,7 +20,13 @@ namespace Model
         {
             areas = new AreaType[100, 100];
             ways = new int[100, 100];
+            //ways = GenMap(100,100);
+            //MessageBox.Show(ways[2,4].ToString(), "gdsg", MessageBoxButtons.OK);
         }
+      
+        
+        
+        
         public static Map Instance
         {
             get
@@ -32,7 +39,24 @@ namespace Model
                 return instance;
             }
         }
-        #endregion
+        #endregion+		rnd	null	System.Random
+
+
+        //public int[,] GenMap(int x,int y) 
+        //{
+            
+           
+        //    int[,] a = new int[x,y];
+            
+        //    for (int i = 0; i < x;i++ )
+        //        for (int o = 0; o < y; o++) 
+        //        {
+        //            Random rnd = new Random(3);
+        //            rnd.Next(a[i, o]);
+        //        }
+
+        //    return a;
+        //}
 
         public void SetLand(int x, int y, AreaType land)
         {
