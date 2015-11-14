@@ -21,7 +21,7 @@ namespace Model
         {
             Persons = new ObservableCollection<Person>();
             Person firstPersone = new Person(50, 1, 1, Side.Left);
-            Person secondPerson = new Person(20, 5, 5, Side.Right);
+            Person secondPerson = new Person(20, 500, 100, Side.Right);
             Persons.Add(firstPersone);
             Persons.Add(secondPerson);
 
