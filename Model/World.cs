@@ -26,35 +26,14 @@ namespace Model
         {
             Map = Map.Instance;
             Persons = new ObservableCollection<Person>();
-            Random rnd = new Random();
-            int x;
-            int y;
-            for (int i = 0; i < 4; i++)
-            {
-                do
-                {
-                    x = rnd.Next(0, 10);
-                    y = rnd.Next(0, 99);
-                } while(Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
 
-                Persons.Add(new Person(50, x, y, (Side)0));
-            }
-            for (int i = 0; i < 4; i++)
-            {                
-                do
-            {
-                    x = rnd.Next(90, 99);
-                    y = rnd.Next(0, 99);
-                } while (Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
-
-                Persons.Add(new Person(50, x, y, (Side)1));
-            }
+            CreateUnite();
 
             ThreadManager.StartSread(Persons);
 
-            ThreadPool.QueueUserWorkItem(new WaitCallback(Looker));
+           // ThreadPool.QueueUserWorkItem(new WaitCallback(Looker));
         }
-        //
+        
         private void Looker(Object stateInfo)
         {
             while (true)
@@ -74,17 +53,42 @@ namespace Model
             }
         }
 
+        public void CreateUnite()
+        {
+            Random rnd = new Random();
+            int x;
+            int y;
+            for (int i = 0; i < 4; i++)
+            {
+                do
+                {
+                    x = rnd.Next(0, 10);
+                    y = rnd.Next(0, 99);
+                } while (Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
+
+                Persons.Add(new Person(50, x, y, (Side)0));
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                do
+                {
+                    x = rnd.Next(90, 99);
+                    y = rnd.Next(0, 99);
+                } while (Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
+
+                Persons.Add(new Person(50, x, y, (Side)1));
+            }
+        }
+
         #region Singleton
         public static World Instance
         {
             get
             {
-                if (instance != null) return instance;
-                Monitor.Enter(lockObject);
-                World temp = new World();
-                Interlocked.Exchange(ref instance, temp);
-                Monitor.Exit(lockObject);
+                if (instance == null)
+                    instance = new World();
                 return instance;
+               
             }
         }
         #endregion
