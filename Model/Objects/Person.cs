@@ -14,26 +14,26 @@ namespace Model.Objects
 {
     public class Person : GameObject
     {
-        private String heroName { set; get; }
-        private int helthPoint { set; get; }
-        private int damage { set; get; }
-        private int armor { set; get; }
-        private int moveSpead { set; get; }
-        private int mana { set; get; }
-        private int range { set; get; }
-        private AttackStyle attackStyle { get; set; }
-        private Side team { set; get; }
+        public String HeroName { set; get; }
+        public int HelthPoint { set; get; }
+        public int Damage { set; get; }
+        public int Armor { set; get; }
+        public int MoveSpead { set; get; }
+        public int Mana { set; get; }
+        public int Range { set; get; }
+        public AttackStyle AttackStyle { get; set; }
+        public Side Team { set; get; }
 
         public Person(int helthPoint, int x, int y, Side team) 
         {
-            this.helthPoint = helthPoint;
+            this.HelthPoint = helthPoint;
             this.X = x;
             this.Y = y;
-            this.team = team;
+            this.Team = team;
         }
 
         private bool isAlive() {
-            if (helthPoint <= 0)
+            if (HelthPoint <= 0)
             {
                 return false;
             }
@@ -49,7 +49,7 @@ namespace Model.Objects
             Point bestStep = new Point();
             foreach(Person person in Persons)
             {
-                if ((this.X == person.X) && (person.Y == this.Y) && this.team != person.team)
+                if ((this.X == person.X) && (person.Y == this.Y) && this.Team != person.Team)
                 {
                     Map map = Map.Instance;
 
@@ -68,8 +68,8 @@ namespace Model.Objects
 
         public void TakingDamage(object sender, EnemyAttack_Event e)
         {
-            int realDamage = e.getEnemyDamage() - armor / 10;
-            helthPoint -= realDamage;
+            int realDamage = e.getEnemyDamage() - Armor / 10;
+            HelthPoint -= realDamage;
         }
 
         public void Live()

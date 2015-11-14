@@ -20,7 +20,7 @@ namespace Model
         Mili
     };
 
-    public enum Side
+    enum Side
     {
         Left,
         Right
