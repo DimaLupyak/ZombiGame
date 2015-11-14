@@ -55,17 +55,15 @@ namespace Model
                     y = rnd.Next(0, 99);
                 } while (Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
 
-                Persons.Add(new Person(100, x, y, (Side)0));
-                Persons[i].RemoveMe += RemoveUnitEvent;
-            }
-            for (int i = 0; i < 5; i++)
-            {
+                Person person = new Person(100, x, y, (Side)0);
+                person.RemoveMe += RemoveUnitEvent;
+                Persons.Add(person);
                 do
                 {
                     x = rnd.Next(90, 99);
                     y = rnd.Next(0, 99);
                 } while (Map.Instance.Areas[x / 10, y / 10] == AreaType.Water);
-                Person person = new Person(100, x, y, (Side)1);
+                person = new Person(100, x, y, (Side)1);
                 person.RemoveMe += RemoveUnitEvent;
                 Persons.Add(person);
             }

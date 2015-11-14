@@ -11,7 +11,7 @@ using System.ComponentModel;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Model.Objects 
+namespace Model.Objects
 {
     public class Person : GameObject, INotifyPropertyChanged
     {
@@ -41,7 +41,7 @@ namespace Model.Objects
 
             }
         }
-        
+
         new public int Y
         {
             get { return y; }
@@ -75,9 +75,9 @@ namespace Model.Objects
             }
         }
 
-        
 
-        public Person(int helthPoint, int x, int y, Side team) 
+
+        public Person(int helthPoint, int x, int y, Side team)
         {
             this.HelthPoint = helthPoint;
             this.x = x;
@@ -85,28 +85,30 @@ namespace Model.Objects
             this.Team = team;
             this.damage = 2;
             range = 5;
-            Size = (int) SystemInformation.VirtualScreen.Height / 20;
+            Size = (int)SystemInformation.VirtualScreen.Height / 20;
 
         }
 
-        private bool isAlive() {
+        private bool isAlive()
+        {
             if (HelthPoint <= 0)
             {
                 return false;
             }
             else
                 return true;
-           
+
         }
         #endregion
-        
+
         private void Move()
         {
-            if(Goal!=null)
+            if (Goal != null)
             {
                 List<Point> CurentPoints = new List<Point>();
                 CurentPoints = FindWay.FindPath(World.Instance.Map.Areas, new Point(X, Y), new Point(Goal.X, Goal.Y));
-                try {
+                try
+                {
                     Point bestStep = CurentPoints[1];
                     X = bestStep.X;
                     Y = bestStep.Y;
@@ -123,15 +125,15 @@ namespace Model.Objects
             int realDamage = e.getEnemyDamage() - armor / 10;
             HelthPoint -= realDamage;
 
-            if(HelthPoint <= 0)
+            if (HelthPoint <= 0)
             {
                 EventArgs ex = new EventArgs();
-                if(RemoveMe != null)
+                if (RemoveMe != null)
                     RemoveMe(this, ex);
             }
-            
+
         }
-        
+
 
 
         public void Live(Object stateInfo)
@@ -140,14 +142,14 @@ namespace Model.Objects
             {
                 //if(Goal == null)
                 //{
-                    Goal = FindGoal(World.Instance.Persons);
+                Goal = FindGoal(World.Instance.Persons);
                 //}
                 if (Goal != null)
-                { 
-                    if (Math.Abs(X - Goal.X) < range && Math.Abs(Y - Goal.Y) < range)  
+                {
+                    if (Math.Abs(X - Goal.X) < range && Math.Abs(Y - Goal.Y) < range)
                     {
                         AttackEnemy += Goal.TakingDamage;
-                        AttackEnemy(this, new EnemyAttack_Event(damage)); 
+                        AttackEnemy(this, new EnemyAttack_Event(damage));
                     }
                     else
                     {
@@ -165,9 +167,9 @@ namespace Model.Objects
             int minDistance = Int32.MaxValue;
             foreach (Person person in Persons)
             {
-                if(this.Equals(person)) continue;
+                if (this.Equals(person)) continue;
                 if (Team == person.Team) continue;
-                int distanse = Math.Abs(X - person.X)+ Math.Abs(Y - person.Y);
+                int distanse = Math.Abs(X - person.X) + Math.Abs(Y - person.Y);
                 if (minDistance > distanse)
                 {
                     minDistance = distanse;

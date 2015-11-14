@@ -24,7 +24,7 @@ namespace ViewModel
 
         private void StartGameClickMethod()
         {
-            World.Instance.ToString();
+            World.Instance.StartGame();
         }
 
         public ICommand StartGame { get; set; }
