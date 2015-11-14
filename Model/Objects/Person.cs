@@ -71,7 +71,7 @@ namespace Model.Objects
             this.y = y;
             this.Team = team;
             this.damage = 2;
-            range = 10;
+            range = 5;
             Size = (int) SystemInformation.VirtualScreen.Height / 20;
 
         }
