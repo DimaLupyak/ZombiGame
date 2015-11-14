@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 
-namespace PathFinder
+namespace Model
 {
 
     public class FindWay
@@ -35,7 +35,7 @@ namespace PathFinder
         }
 
         // класс для вычисления маршрута.
-        public static List<Point> FindPath(int[,] field, Point start, Point goal)
+        public static List<Point> FindPath(AreaType[,] field, Point start, Point goal)
         {
             // Шаг 1.
             var closedSet = new Collection<PathNode>();
@@ -52,11 +52,11 @@ namespace PathFinder
             while (openSet.Count > 0)
             {
                 // Шаг 3.
-                
+
                 var currentNode = openSet.OrderBy(node =>
                   node.EstimateFullPathLength).First();
                 // Шаг 4.
-                if (currentNode.Position == goal)
+                if (currentNode.Position == goal || GetHeuristicPathLength(currentNode.Position, start) > 30)
                 {
                     
                     return GetPathForNode(currentNode);
@@ -106,7 +106,7 @@ namespace PathFinder
 
         //списка соседей для точки:
         private static Collection<PathNode> GetNeighbours(PathNode pathNode,
-          Point goal, int[,] field)
+          Point goal, AreaType[,] field)
         {
             var result = new Collection<PathNode>();
 
@@ -120,12 +120,12 @@ namespace PathFinder
             foreach (var point in neighbourPoints)
             {
                 // Проверяем, что не вышли за границы карты.
-                if (point.X < 0 || point.X >= field.GetLength(0))
+                if (point.X < 0 || point.X >= field.GetLength(0)*10)
                     continue;
-                if (point.Y < 0 || point.Y >= field.GetLength(1))
+                if (point.Y < 0 || point.Y >= field.GetLength(1)*10)
                     continue;
                 // Проверяем, что по клетке можно ходить.
-                if ((field[point.X, point.Y] == 0))
+                if ((field[(int)point.X/10, (int)point.Y/10]== AreaType.Water))
                     continue;
                 // Заполняем данные для точки маршрута.
                 var neighbourNode = new PathNode()

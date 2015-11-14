@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Model.EventArgument;
 using System.Drawing;
-using PathFinder;
 using Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -116,7 +115,15 @@ namespace Model.Objects
         {
             if(Goal!=null)
             {
-                if (X > Goal.X)
+                List<Point> CurentPoints = new List<Point>();
+                CurentPoints = FindWay.FindPath(World.Instance.Map.Areas, new Point(X, Y), new Point(Goal.X, Goal.Y));
+                try {
+                    Point bestStep = CurentPoints[1];
+                    X = bestStep.X;
+                    Y = bestStep.Y;
+                }
+                catch (Exception e) { }
+                /*if (X > Goal.X)
                 {
                     X--;
                 }
@@ -131,8 +138,10 @@ namespace Model.Objects
                 else if (Y < Goal.Y)
                 {
                     Y++;
-                }
+                }*/
             }
+
+
         }
 
         public event EventHandler<EnemyAttack_Event> AttackEnemy;
@@ -165,8 +174,7 @@ namespace Model.Objects
                         Move();
                     }
                 }
-                Thread.Sleep(20);
-                //Move(World.Instance.Persons);
+                Thread.Sleep(50);
             }
         }
 
