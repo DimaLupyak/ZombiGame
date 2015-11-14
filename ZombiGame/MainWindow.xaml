@@ -32,12 +32,16 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate >
                     <Canvas Height="Auto" Name="PersonCanvas" Width="Auto">
+                        
                         <Image Source="{Binding Team, ConverterParameter=Type, Converter={StaticResource personImageConvertor}}"  
                                Canvas.Top="{Binding Y, ConverterParameter=Y , Converter={StaticResource personImageConvertor}}" 
                                Canvas.Left="{Binding X, ConverterParameter=X , Converter={StaticResource personImageConvertor}}" 
                                Width="{Binding Size}" Height="{Binding Size}"
                                Opacity="0.6">                            
                         </Image>
+                        <ProgressBar Value="{Binding HelthPoint}" Height="10" Width="{Binding Size}"
+                            Canvas.Top="{Binding Y, ConverterParameter=Y , Converter={StaticResource personImageConvertor}}"
+                            Canvas.Left="{Binding X, ConverterParameter=X , Converter={StaticResource personImageConvertor}}"></ProgressBar>
                     </Canvas>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

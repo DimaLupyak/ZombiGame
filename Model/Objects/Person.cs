@@ -64,13 +64,13 @@ namespace Model.Objects
 
         
 
-        public Person(int helthPoint, int x, int y, Side team) 
+        public Person(int helthPoint, int x, int y, Side team, int damage) 
         {
             this.HelthPoint = helthPoint;
             this.x = x;
             this.y = y;
             this.Team = team;
-            this.damage = 2;
+            this.damage = damage;
             range = 5;
             Size = (int) SystemInformation.VirtualScreen.Height / 20;
 
