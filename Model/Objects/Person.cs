@@ -72,6 +72,8 @@ namespace Model.Objects
             helthPoint -= realDamage;
         }
 
+
+
         public void Live()
         {
             while (isAlive())

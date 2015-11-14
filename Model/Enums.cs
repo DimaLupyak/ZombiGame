@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    enum AreaType
+    public enum AreaType
     {
-        Grass,
-        Water,
-        Hill,
-        Swamp
+        Grass=0,
+        Water=1,
+        Hill=2,
+        Swamp=3
     };
     
     enum AttackStyle
