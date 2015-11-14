@@ -32,4 +32,12 @@ namespace Model
         DoubleDamage,
         MoveSpead,
     };
+
+    public enum Vektor
+    {
+        Top, 
+        Right,
+        Bottom,
+        Left
+    };
 }

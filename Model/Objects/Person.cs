@@ -24,6 +24,7 @@ namespace Model.Objects
         protected int mana;
         protected int range;
         protected AttackStyle attackStyle;
+        protected Vektor vektor;
 
         #endregion
         #region Properties
@@ -51,6 +52,18 @@ namespace Model.Objects
 
             }
         }
+
+        public Vektor Vektor
+        {
+            get { return vektor; }
+            set
+            {
+                vektor = value;
+                OnPropertyChanged("Vektor");
+
+            }
+        }
+
         public int HelthPoint
         {
             get { return helthPoint; }
