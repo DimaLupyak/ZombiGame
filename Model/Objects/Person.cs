@@ -70,7 +70,8 @@ namespace Model.Objects
             this.x = x;
             this.y = y;
             this.Team = team;
-            this.damage = 20;
+            this.damage = 2;
+            range = 5;
             Size = (int) SystemInformation.VirtualScreen.Height / 20;
 
         }
@@ -85,32 +86,7 @@ namespace Model.Objects
            
         }
         #endregion
-        /*private void Move(ObservableCollection<Person> Persons)
-        {
-            List<Point> CurentPoints = new List<Point>();
-            int minCount = 1000;
-            Point bestStep = new Point(this.X, this.Y);
-            foreach(Person person in Persons)
-            {
-                if ((this.x != person.x) && (person.y != this.y) && this.team != person.team)
-                {
-                    Map map = Map.Instance;
-
-                    CurentPoints = FindWay.FindPath(map.ways, new Point(this.x, this.y), new Point(person.x, person.y));
-                    if (CurentPoints == null) break;
-                    if (CurentPoints.Count != 0 && CurentPoints.Count < minCount)
-                    {
-                        bestStep = CurentPoints[1];
-                    }
-                }
-            }
-
-            //Map.Instance.ways[this.X, this.Y] = 0;
-            //Map.Instance.ways[bestStep.X, bestStep.Y] = 1;
-
-            this.X = bestStep.X;
-            this.Y = bestStep.Y;
-        }*/
+        
         private void Move()
         {
             if(Goal!=null)
@@ -123,22 +99,6 @@ namespace Model.Objects
                     Y = bestStep.Y;
                 }
                 catch (Exception e) { }
-                /*if (X > Goal.X)
-                {
-                    X--;
-                }
-                else if (X < Goal.X)
-                {
-                    X++;
-                }
-                if (Y > Goal.Y)
-                {
-                    Y--;
-                }
-                else if (Y < Goal.Y)
-                {
-                    Y++;
-                }*/
             }
 
 
@@ -164,7 +124,7 @@ namespace Model.Objects
                 //}
                 if (Goal != null)
                 { 
-                    if ((X == Goal.X) && (Y == Goal.Y))  
+                    if (Math.Abs(X - Goal.X) < range && Math.Abs(Y - Goal.Y) < range)  
                     {
                         AttackEnemy += Goal.TakingDamage;
                         AttackEnemy(this, new EnemyAttack_Event(damage)); 
@@ -174,7 +134,7 @@ namespace Model.Objects
                         Move();
                     }
                 }
-                Thread.Sleep(50);
+                Thread.Sleep(100);
             }
         }
 

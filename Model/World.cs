@@ -31,10 +31,10 @@ namespace Model
 
             Remove += RemovekEvent;
             Random rnd = new Random();
+            int x;
+            int y;
             for (int i = 0; i < 4; i++)
             {
-                int x;
-                int y;
                 do
                 {
                     x = rnd.Next(0, 10);
@@ -44,9 +44,7 @@ namespace Model
                 Persons.Add(new Person(50, x, y, (Side)0));
             }
             for (int i = 0; i < 4; i++)
-            {
-                int x;
-                int y;
+            {                
                 do
                 {
                     x = rnd.Next(90, 99);

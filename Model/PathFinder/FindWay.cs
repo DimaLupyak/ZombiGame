@@ -56,7 +56,7 @@ namespace Model
                 var currentNode = openSet.OrderBy(node =>
                   node.EstimateFullPathLength).First();
                 // Шаг 4.
-                if (currentNode.Position == goal || GetHeuristicPathLength(currentNode.Position, start) > 30)
+                if (currentNode.Position == goal || GetHeuristicPathLength(currentNode.Position, start) > 10)
                 {
                     
                     return GetPathForNode(currentNode);
@@ -111,12 +111,15 @@ namespace Model
             var result = new Collection<PathNode>();
 
             // Соседними точками являются соседние по стороне клетки.
-            Point[] neighbourPoints = new Point[4];
+            Point[] neighbourPoints = new Point[8];
             neighbourPoints[0] = new Point(pathNode.Position.X + 1, pathNode.Position.Y);
             neighbourPoints[1] = new Point(pathNode.Position.X - 1, pathNode.Position.Y);
             neighbourPoints[2] = new Point(pathNode.Position.X, pathNode.Position.Y + 1);
             neighbourPoints[3] = new Point(pathNode.Position.X, pathNode.Position.Y - 1);
-
+            neighbourPoints[4] = new Point(pathNode.Position.X + 1, pathNode.Position.Y+1);
+            neighbourPoints[5] = new Point(pathNode.Position.X - 1, pathNode.Position.Y-1);
+            neighbourPoints[6] = new Point(pathNode.Position.X-1, pathNode.Position.Y + 1);
+            neighbourPoints[7] = new Point(pathNode.Position.X+1, pathNode.Position.Y - 1);
             foreach (var point in neighbourPoints)
             {
                 // Проверяем, что не вышли за границы карты.
