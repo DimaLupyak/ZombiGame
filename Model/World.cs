@@ -29,12 +29,17 @@ namespace Model
 
             CreateUnite();
 
-            ThreadManager.StartSread(Persons);
+            
         }
         
         private void RemoveUnitEvent(object sender, EventArgs e)
         {
             Application.Current.Dispatcher.BeginInvoke(new Func<bool>(() => Persons.Remove((Person)sender)));   
+        }
+
+        public void StartGame()
+        {
+            ThreadManager.StartSread(Persons);
         }
 
         public void CreateUnite()
