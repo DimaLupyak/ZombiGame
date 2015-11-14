@@ -31,7 +31,7 @@ namespace Model
 
             ThreadManager.StartSread(Persons);
 
-           // ThreadPool.QueueUserWorkItem(new WaitCallback(Looker));
+            ThreadPool.QueueUserWorkItem(new WaitCallback(Looker));
         }
         
         private void Looker(Object stateInfo)
