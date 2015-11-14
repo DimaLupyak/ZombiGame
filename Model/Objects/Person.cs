@@ -10,11 +10,13 @@ using Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Model.Objects 
 {
     public class Person : GameObject, INotifyPropertyChanged
     {
+        #region Fields
         protected String heroName;
         protected int helthPoint;
         protected int damage;
@@ -23,8 +25,33 @@ namespace Model.Objects
         protected int mana;
         protected int range;
         protected AttackStyle attackStyle;
-        protected Side team;
+        private bool whatToDo = false;
 
+        #endregion
+        #region Properties
+        public Side Team { get; set; }
+        public Person Goal { get; set; }
+        new public int X
+        {
+            get { return x; }
+            set
+            {
+                x = value;
+                OnPropertyChanged("X");
+
+            }
+        }
+
+        new public int Y
+        {
+            get { return y; }
+            set
+            {
+                y = value;
+                OnPropertyChanged("Y");
+
+            }
+        }
         public int HelthPoint
         {
             get { return helthPoint; }
@@ -36,34 +63,14 @@ namespace Model.Objects
             }
         }
 
-        public int X
-        {
-            get { return x; }
-            set
-            {
-                x = value;
-                OnPropertyChanged("X");
-
-            }
-        }
-
-        public int Y
-        {
-            get { return y; }
-            set
-            {
-                y = value;
-                OnPropertyChanged("Y");
-
-            }
-        }
+        
 
         public Person(int helthPoint, int x, int y, Side team) 
         {
             this.HelthPoint = helthPoint;
             this.x = x;
             this.y = y;
-            this.team = team;
+            this.Team = team;
         }
 
         private bool isAlive() {
@@ -75,8 +82,8 @@ namespace Model.Objects
                 return true;
            
         }
-
-        private void Move(ObservableCollection<Person> Persons)
+        #endregion
+        /*private void Move(ObservableCollection<Person> Persons)
         {
             List<Point> CurentPoints = new List<Point>();
             int minCount = 1000;
@@ -95,10 +102,40 @@ namespace Model.Objects
                     }
                 }
             }
+
+            //Map.Instance.ways[this.X, this.Y] = 0;
+            //Map.Instance.ways[bestStep.X, bestStep.Y] = 1;
+
             this.X = bestStep.X;
             this.Y = bestStep.Y;
-        }
+        }*/
+        private void Move()
+        {
+            if(Goal!=null)
+            {
+                if (X > Goal.X)
+                {
+                    X--;
+                }
+                else if (X < Goal.X)
+                {
+                    X++;
+                }
+                if (Y > Goal.Y)
+                {
+                    Y--;
+                }
+                else if (Y < Goal.Y)
+                {
+                    Y++;
+                }
 
+                if((X + 10  == Goal.X) || (Y + 10 == Goal.Y) || (X - 10 == Goal.X) || (Y - 10 == Goal.Y))
+                {
+                    whatToDo = true;
+                }
+            }
+        }
         public event EventHandler<EnemyAttack_Event> AttackEnemy;
 
         public void TakingDamage(object sender, EnemyAttack_Event e)
@@ -113,8 +150,42 @@ namespace Model.Objects
         {
             while (isAlive())
             {
-                Move(World.Instance.Persons);
+                //if(Goal == null)
+                {
+                    Goal = FindGoal(World.Instance.Persons);
+                }
+                if (!whatToDo)
+                {
+                    Move();
+                }
+                else
+                {
+                    AttackEnemy += Goal.TakingDamage;
+                    AttackEnemy(this, new EnemyAttack_Event(damage));
+                }
+                
+                Thread.Sleep(20);
+                //Move(World.Instance.Persons);
             }
+        }
+
+        private Person FindGoal(ObservableCollection<Person> Persons)
+        {
+
+            Person goal = null;
+            int minDistance = Int32.MaxValue;
+            foreach (Person person in Persons)
+            {
+                if(this.Equals(person)) continue;
+                if (Team == person.Team) continue;
+                int distanse = Math.Abs(X - person.X)+ Math.Abs(Y - person.Y);
+                if (minDistance > distanse)
+                {
+                    minDistance = distanse;
+                    goal = person;
+                }
+            }
+            return goal;
         }
 
         #region Implement INotyfyPropertyChanged members

@@ -77,3 +77,4 @@ C:\Users\Oleksii\Desktop\6\ZombiGame\obj\Debug\ZombiGame.Properties.Resources.re
 C:\Users\Oleksii\Desktop\6\ZombiGame\obj\Debug\ZombiGame.csproj.GenerateResource.Cache
 C:\Users\Oleksii\Desktop\6\ZombiGame\obj\Debug\ZombiGame.exe
 C:\Users\Oleksii\Desktop\6\ZombiGame\obj\Debug\ZombiGame.pdb
+D:\Programming\VisualStudioProjects\Zombie\ZombiGame\obj\Debug\GeneratedInternalTypeHelper.g.cs

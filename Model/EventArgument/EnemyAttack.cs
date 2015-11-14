@@ -10,6 +10,10 @@ namespace Model.EventArgument
     {
         private int EnemyDamage;
 
+        public EnemyAttack_Event(int damage)
+        {
+            EnemyDamage = damage;
+        }
         public int getEnemyDamage()
         {
             return EnemyDamage;

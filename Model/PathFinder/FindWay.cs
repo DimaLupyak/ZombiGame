@@ -48,7 +48,6 @@ namespace PathFinder
                 PathLengthFromStart = 0,
                 HeuristicEstimatePathLength = GetHeuristicPathLength(start, goal)
             };
-            int i = 0;
             openSet.Add(startNode);
             while (openSet.Count > 0)
             {
@@ -71,7 +70,10 @@ namespace PathFinder
                 {
                     // Шаг 7.
                     if (closedSet.Count(node => node.Position == neighbourNode.Position) > 0)
+                    {
                         continue;
+                    }
+                        
                     var openNode = openSet.FirstOrDefault(node =>
                       node.Position == neighbourNode.Position);
                     // Шаг 8.

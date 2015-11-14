@@ -24,19 +24,19 @@ namespace Model
         {
             map = Map.Instance;
             Persons = new ObservableCollection<Person>();
-            Person firstPersone = new Person(50, 0, 0, Side.Left);
-            Person secondPerson = new Person(20, 99, 99, Side.Right);
-            Person secondPerson3 = new Person(20, 0, 99, Side.Right);
-            Persons.Add(firstPersone);
-            Persons.Add(secondPerson);
-            Persons.Add(secondPerson3);
-            Thread threadPersoneFirst = new Thread(new ThreadStart(firstPersone.Live));
-            threadPersoneFirst.Start();
-
-            Thread threadPersoneSecond = new Thread(new ThreadStart(secondPerson.Live));
-            threadPersoneSecond.Start();
-            Thread threadPersoneFirst3 = new Thread(new ThreadStart(secondPerson3.Live));
-            threadPersoneFirst3.Start();
+            Random rnd = new Random();
+            for(int i = 0; i < 20; i++)
+            {
+                Persons.Add(new Person(50, rnd.Next(0,1000), rnd.Next(0, 1000), (Side)rnd.Next(0, 2)));
+            }
+            //Persons.Add(new Person(50, 0, 0, Side.Left));
+            //Persons.Add(new Person(50, 0, 200, Side.Right));
+            //Persons.Add(new Person(50, 400, 600, Side.Right));
+            //Persons.Add(new Person(50, 800, 700, Side.Left));
+            foreach (Person person in Persons)
+            {
+                new Thread(new ThreadStart(person.Live)).Start();
+            }
         }
 
 

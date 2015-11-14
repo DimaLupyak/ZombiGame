@@ -3,19 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:ZombiGame.Converters;assembly="
         xmlns:local="clr-namespace:ZombiGame"
         mc:Ignorable="d"
         Title="Monster War" Height="350" Width="525" WindowState="Maximized">
+    <Window.Resources>
+        <converters:PersonImageConvertor x:Key="personImageConvertor"/>
+    </Window.Resources>
     <Grid>
         
         <ItemsControl  ItemsSource="{Binding Path=World.Persons,Mode=TwoWay}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate >
                     <Canvas Height="Auto" Name="Canvas1" Width="Auto">
-                        <Image Source="Images/Grass.png" Canvas.Top="{Binding Y}" Canvas.Left="{Binding X}" Width="10" Height="10">
-                            <Image.OpacityMask>
-                                <ImageBrush ImageSource="Images/Grass.png"/>
-                            </Image.OpacityMask>
+                        <Image Source="{Binding Team, Converter={StaticResource personImageConvertor}}"  
+                               Canvas.Top="{Binding Y}" Canvas.Left="{Binding X}" Width="10" Height="10">
+                            
                         </Image>
                     </Canvas>
                 </DataTemplate>

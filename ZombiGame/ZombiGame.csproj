@@ -64,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\PersonImageConvertor.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -114,6 +115,12 @@
     <Resource Include="Images\Hill.jpg" />
     <Resource Include="Images\Swamp.png" />
     <Resource Include="Images\Water.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Left.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Right.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
