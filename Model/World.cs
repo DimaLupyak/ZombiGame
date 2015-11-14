@@ -31,7 +31,7 @@ namespace Model
 
             
         }
-        
+        //
         private void RemoveUnitEvent(object sender, EventArgs e)
         {
             Application.Current.Dispatcher.BeginInvoke(new Func<bool>(() => Persons.Remove((Person)sender)));   
