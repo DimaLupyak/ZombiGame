@@ -41,7 +41,10 @@
                         </Image>
                         <ProgressBar Value="{Binding HelthPoint}" Height="10" Width="{Binding Size}"
                             Canvas.Top="{Binding Y, ConverterParameter=Y , Converter={StaticResource personImageConvertor}}"
-                            Canvas.Left="{Binding X, ConverterParameter=X , Converter={StaticResource personImageConvertor}}"></ProgressBar>
+                            Canvas.Left="{Binding X, ConverterParameter=X , Converter={StaticResource personImageConvertor}}"
+                                     Opacity="0.8">
+                            
+                        </ProgressBar>
                     </Canvas>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

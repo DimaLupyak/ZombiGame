@@ -56,7 +56,7 @@ namespace Model
                 var currentNode = openSet.OrderBy(node =>
                   node.EstimateFullPathLength).First();
                 // Шаг 4.
-                if (currentNode.Position == goal || GetHeuristicPathLength(currentNode.Position, start) > 10)
+                if (currentNode.Position == goal /*|| GetHeuristicPathLength(currentNode.Position, start) > 50*/)
                 {
                     
                     return GetPathForNode(currentNode);
