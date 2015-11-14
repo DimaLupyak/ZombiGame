@@ -25,7 +25,7 @@ namespace Model
             Map = Map.Instance;
             Persons = new ObservableCollection<Person>();
             Random rnd = new Random();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 15; i++)
             {
                 Persons.Add(new Person(50, rnd.Next(0, 800), rnd.Next(0, 500), (Side)rnd.Next(0, 2)));
             }
@@ -35,7 +35,7 @@ namespace Model
             //Persons.Add(new Person(50, 800, 700, Side.Left));
             foreach (Person person in Persons)
             {
-                new Thread(new ThreadStart(person.Live)).Start();
+                ThreadPool.QueueUserWorkItem(new WaitCallback(person.Live));
             }
             new Thread(Looker);
         }

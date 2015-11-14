@@ -153,7 +153,7 @@ namespace Model.Objects
         }
 
 
-        public void Live()
+        public void Live(Object stateInfo)
         {
             while (HelthPoint >= 0)
             {
