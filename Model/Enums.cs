@@ -25,7 +25,7 @@ namespace Model
         Left,
         Right
     };
-
+    //
     public enum BonusType
     {
         Armor,
