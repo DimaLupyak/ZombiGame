@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Model
 {
-    class Map
+    public class Map
     {
         private AreaType[,] areas { get; set; }
         public int[,] ways { get; private set; }
