@@ -46,6 +46,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="EventArgument\EnemyAttack.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="MapArea.cs" />
     <Compile Include="Objects\Bonus.cs" />
     <Compile Include="Objects\GameObject.cs" />
     <Compile Include="Objects\Person.cs" />

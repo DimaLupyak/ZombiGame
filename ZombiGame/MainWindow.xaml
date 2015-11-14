@@ -9,20 +9,37 @@
         Title="Monster War" Height="350" Width="525" WindowState="Maximized">
     <Window.Resources>
         <converters:PersonImageConvertor x:Key="personImageConvertor"/>
+        <converters:MapAreaImageConvertor x:Key="mapAreaImageConvertor"/>
     </Window.Resources>
     <Grid>
-        
-        <ItemsControl  ItemsSource="{Binding Path=World.Persons,Mode=TwoWay}">
+        <ItemsControl  ItemsSource="{Binding Path=World.Map.MapArias,Mode=TwoWay}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate >
-                    <Canvas Height="Auto" Name="Canvas1" Width="Auto">
-                        <Image Source="{Binding Team, Converter={StaticResource personImageConvertor}}"  
-                               Canvas.Top="{Binding Y}" Canvas.Left="{Binding X}" Width="10" Height="10">
-                            
+                    <Canvas Height="Auto" Name="PersonCanvas" Width="Auto">
+                        <Image Source="{Binding AreaType, ConverterParameter=Type , Converter={StaticResource mapAreaImageConvertor}}"  
+                               Canvas.Top="{Binding Y, ConverterParameter=Y , Converter={StaticResource mapAreaImageConvertor}}" 
+                               Canvas.Left="{Binding X, ConverterParameter=X , Converter={StaticResource mapAreaImageConvertor}}" 
+                               Width="100" 
+                               Height="100">
+
                         </Image>
                     </Canvas>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        <ItemsControl  ItemsSource="{Binding Path=World.Persons,Mode=TwoWay}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate >
+                    <Canvas Height="Auto" Name="PersonCanvas" Width="Auto">
+                        <Image Source="{Binding Team, Converter={StaticResource personImageConvertor}}"  
+                               Canvas.Top="{Binding Y}" Canvas.Left="{Binding X}" Width="10" Height="10">                            
+                        </Image>
+                    </Canvas>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        
+        
     </Grid>
 </Window>

@@ -18,16 +18,16 @@ namespace Model
         private static readonly Object lockObject = new Object();
         private static World instance = null;
 
-        private Map map;
+        public Map Map { get; set; }
         public ObservableCollection<Person> Persons { get; set; }
         private World()
         {
-            map = Map.Instance;
+            Map = Map.Instance;
             Persons = new ObservableCollection<Person>();
             Random rnd = new Random();
-            for(int i = 0; i < 20; i++)
+            for(int i = 0; i < 3; i++)
             {
-                Persons.Add(new Person(50, rnd.Next(0,1000), rnd.Next(0, 1000), (Side)rnd.Next(0, 2)));
+                Persons.Add(new Person(50, rnd.Next(100,800), rnd.Next(100, 400), (Side)rnd.Next(0, 2)));
             }
             //Persons.Add(new Person(50, 0, 0, Side.Left));
             //Persons.Add(new Person(50, 0, 200, Side.Right));
