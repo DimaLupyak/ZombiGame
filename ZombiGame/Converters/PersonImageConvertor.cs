@@ -19,11 +19,11 @@ namespace ZombiGame.Converters
                 Side side = (Side)value;
                 if (side == Side.Left)
                 {
-                    return "Images/Left.jpg";
+                    return "Images/Animation.gif";
                 }
                 else
                 {
-                    return "Images/Right.jpg";
+                    return "Images/Human.gif";
                 }
             }
             else if (parameter.ToString() == "Y")

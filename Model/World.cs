@@ -47,7 +47,7 @@ namespace Model
             Random rnd = new Random();
             int x;
             int y;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 5; i++)
             {
                 do
                 {
@@ -58,7 +58,7 @@ namespace Model
                 Persons.Add(new Person(100, x, y, (Side)0));
                 Persons[i].RemoveMe += RemoveUnitEvent;
             }
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 5; i++)
             {
                 do
                 {

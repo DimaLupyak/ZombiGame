@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ViewModel
 {
@@ -18,7 +19,16 @@ namespace ViewModel
         public ZombieGameViewModel()
         {
             World = World.Instance;
-        }        
+            StartGame = new Command(arg => StartGameClickMethod());
+        }
+
+        private void StartGameClickMethod()
+        {
+            World.Instance.ToString();
+        }
+
+        public ICommand StartGame { get; set; }
+
         #endregion
         #region Implement INotyfyPropertyChanged members
 

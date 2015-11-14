@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="clr-namespace:ZombiGame.Converters;assembly="
         xmlns:local="clr-namespace:ZombiGame"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
         Title="Monster War" Height="350" Width="525" WindowState="Maximized" Background="Black"
         WindowStyle="None" ResizeMode="NoResize">
@@ -13,6 +14,11 @@
         <converters:MapAreaImageConvertor x:Key="mapAreaImageConvertor"/>
     </Window.Resources>
     <Grid>
+        <StackPanel>
+            <Button Content="start" Width="80" HorizontalAlignment="Left" Margin="10">
+                
+            </Button>
+        </StackPanel>
         <ItemsControl  ItemsSource="{Binding Path=World.Map.MapArias,Mode=TwoWay}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate >
@@ -32,8 +38,8 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate >
                     <Canvas Height="Auto" Name="PersonCanvas" Width="Auto">
-                        
-                        <Image Source="{Binding Team, ConverterParameter=Type, Converter={StaticResource personImageConvertor}}"  
+
+                        <Image gif:ImageBehavior.AnimatedSource="{Binding Team, ConverterParameter=Type, Converter={StaticResource personImageConvertor}}"
                                Canvas.Top="{Binding Y, ConverterParameter=Y , Converter={StaticResource personImageConvertor}}" 
                                Canvas.Left="{Binding X, ConverterParameter=X , Converter={StaticResource personImageConvertor}}" 
                                Width="{Binding Size}" Height="{Binding Size}"
