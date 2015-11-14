@@ -13,8 +13,8 @@ namespace Model
         Hill=2,
         Swamp=3
     };
-    
-    enum AttackStyle
+
+    public enum AttackStyle
     {
         Renge,
         Mili
@@ -26,7 +26,7 @@ namespace Model
         Right
     };
 
-    enum BonusType
+    public enum BonusType
     {
         Armor,
         DoubleDamage,
