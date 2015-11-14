@@ -10,7 +10,7 @@ namespace Model
 {
     class Map
     {
-        private AreaType[,] areas { get; set; }
+        //private AreaType[,] areas { get; set; }
         public int[,] ways { get; private set; }
         #region Singleton
 
@@ -18,10 +18,10 @@ namespace Model
         private static Map instance = null;
         private Map()
         {
-            areas = new AreaType[100, 100];
-            ways = new int[100, 100];
-            //ways = GenMap(100,100);
-            //MessageBox.Show(ways[2,4].ToString(), "gdsg", MessageBoxButtons.OK);
+            //areas = new AreaType[100, 100];
+            ways = new int[1000, 1000];
+            ways = GenMap(1000, 1000);
+            MessageBox.Show(ways[2,4].ToString(), "gdsg", MessageBoxButtons.OK);
         }
       
         
@@ -42,26 +42,26 @@ namespace Model
         #endregion+		rnd	null	System.Random
 
 
-        //public int[,] GenMap(int x,int y) 
-        //{
-            
-           
-        //    int[,] a = new int[x,y];
-            
-        //    for (int i = 0; i < x;i++ )
-        //        for (int o = 0; o < y; o++) 
-        //        {
-        //            Random rnd = new Random(3);
-        //            rnd.Next(a[i, o]);
-        //        }
-
-        //    return a;
-        //}
-
-        public void SetLand(int x, int y, AreaType land)
+        public int[,] GenMap(int x,int y) 
         {
-            areas[x, y] = land;
-            ways[x, y] = (int)land;
-        }        
+            
+           Random rnd = new Random();
+            int[,] a = new int[x,y];
+            
+            for (int i = 0; i < x;i++ )
+                for (int o = 0; o < y; o++) 
+                {
+                    
+                    a[i, o]=rnd.Next(0,0);
+                }
+
+            return a;
+        }
+
+        //public void SetLand(int x, int y, AreaType land)
+        //{
+        //    areas[x, y] = land;
+        //    ways[x, y] = (int)land;
+        //}        
     }
 }

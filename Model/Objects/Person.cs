@@ -80,15 +80,15 @@ namespace Model.Objects
         {
             List<Point> CurentPoints = new List<Point>();
             int minCount = 1000;
-            Point bestStep = new Point();
+            Point bestStep = new Point(this.X, this.Y);
             foreach(Person person in Persons)
             {
-                if ((this.x == person.x) && (person.y == this.y) && this.team != person.team)
+                if ((this.x != person.x) && (person.y != this.y) && this.team != person.team)
                 {
                     Map map = Map.Instance;
 
                     CurentPoints = FindWay.FindPath(map.ways, new Point(this.x, this.y), new Point(person.x, person.y));
-                    if (CurentPoints.Count < minCount)
+                    if (CurentPoints.Count != 0 && CurentPoints.Count < minCount)
                     {
                         bestStep = CurentPoints.First();
                     }

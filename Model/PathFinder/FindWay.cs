@@ -149,7 +149,7 @@ namespace PathFinder
                 result.Add(currentNode.Position);
                 currentNode = currentNode.CameFrom;
             }
-            //result.Reverse();
+            result.Reverse();
             return result;
         }
     }

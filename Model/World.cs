@@ -17,8 +17,12 @@ namespace Model
 
         private static readonly Object lockObject = new Object();
         private static World instance = null;
+
+        private Map map;
+        public ObservableCollection<Person> Persons { get; set; }
         private World()
         {
+            map = Map.Instance;
             Persons = new ObservableCollection<Person>();
             Person firstPersone = new Person(50, 1, 1, Side.Left);
             Person secondPerson = new Person(20, 500, 100, Side.Right);
@@ -46,8 +50,7 @@ namespace Model
             }
         }
         #endregion
-        private Map map;
-        public ObservableCollection<Person> Persons { get; set; }
+        
 
 
 
