@@ -27,7 +27,7 @@ namespace Model
                 for (int j = 0; j < 10; j++)
                 {
                     MapArias.Add(new MapArea(i, j, areas[i,j]));
-                }
+        }
             }
         }
         public static Map Instance
@@ -71,16 +71,16 @@ namespace Model
 
         public AreaType[,] GenMap(int x, int y)
         {
-
-            Random rnd = new Random();
+            
+           Random rnd = new Random();
             AreaType[,] map = new AreaType[x, y];
-
+            
             for (int i = 0; i < x; i++)
-                for (int o = 0; o < y; o++)
+                for (int o = 0; o < y; o++) 
                 {
                     map[i, o] = (AreaType)rnd.Next(0, 4);
                 }
-
+                    
             int checkSumX = 0;
             int checkSumY = 0;
 
@@ -102,7 +102,7 @@ namespace Model
                     int j = rnd.Next(0, 99);
                     map[j, i] = (AreaType)0;
                 }
-            }
+                }
             return map;
         }
     }

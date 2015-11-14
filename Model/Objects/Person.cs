@@ -71,6 +71,7 @@ namespace Model.Objects
             this.x = x;
             this.y = y;
             this.Team = team;
+            this.damage = 20;
         }
 
         private bool isAlive() {
@@ -129,39 +130,45 @@ namespace Model.Objects
                 {
                     Y++;
                 }
-
-                if((X + 10  == Goal.X) || (Y + 10 == Goal.Y) || (X - 10 == Goal.X) || (Y - 10 == Goal.Y))
-                {
-                    whatToDo = true;
-                }
             }
         }
-        public event EventHandler<EnemyAttack_Event> AttackEnemy;
 
+        public event EventHandler<EnemyAttack_Event> AttackEnemy;
+        private event EventHandler Vin;
         public void TakingDamage(object sender, EnemyAttack_Event e)
         {
             int realDamage = e.getEnemyDamage() - armor / 10;
             HelthPoint -= realDamage;
+
+            if(HelthPoint <= 0)
+            {
+                Vin += (sender as Person).Vine;
+                Vin(this, new EventArgs());
+            }
         }
 
+        public void Vine(object sender, EventArgs e)
+        {
+            whatToDo = false;
+        }
 
 
         public void Live()
         {
-            while (isAlive())
+            while (HelthPoint >= 0)
             {
                 //if(Goal == null)
-                {
+                //{
                     Goal = FindGoal(World.Instance.Persons);
-                }
-                if (!whatToDo)
+                //}
+                if ((X == Goal.X) && (Y == Goal.Y))  
                 {
-                    Move();
+                    AttackEnemy += Goal.TakingDamage;
+                    AttackEnemy(this, new EnemyAttack_Event(damage)); 
                 }
                 else
                 {
-                    AttackEnemy += Goal.TakingDamage;
-                    AttackEnemy(this, new EnemyAttack_Event(damage));
+                    Move();
                 }
                 
                 Thread.Sleep(20);
