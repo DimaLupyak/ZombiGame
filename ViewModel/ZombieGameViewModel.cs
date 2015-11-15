@@ -28,7 +28,7 @@ namespace ViewModel
 
         private void StartGameClickMethod()
         {
-            World.Instance.StartGame();
+            World.Instance.ToString();
         }
         private void ExitClickMethod()
         {

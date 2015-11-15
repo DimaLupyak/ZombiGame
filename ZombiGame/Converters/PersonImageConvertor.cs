@@ -19,11 +19,11 @@ namespace ZombiGame.Converters
                 Side side = (Side)value;
                 if (side == Side.Left)
                 {
-                    return "Images/man.gif";
+                    return "Images/Animation.gif";
                 }
                 else
                 {
-                    return "Images/Zomb.gif";
+                    return "Images/Human.gif";
                 }
             }
             else if (parameter.ToString() == "Y")
@@ -36,18 +36,6 @@ namespace ZombiGame.Converters
                 int x = (int)value;
                 int mergine = (int)(SystemParameters.WorkArea.Width - SystemParameters.WorkArea.Height) / 2;
                 return mergine + SystemParameters.WorkArea.Height / 100 * x - SystemParameters.WorkArea.Height / 40;
-            }
-            else if (parameter.ToString() == "Side")
-            {
-                Side side = (Side)value;
-                if (side == Side.Left)
-                {
-                    return "Lime";
-                }
-                else
-                {
-                    return "Red";
-                }
             }
             return DependencyProperty.UnsetValue;
         }
