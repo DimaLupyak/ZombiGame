@@ -101,6 +101,7 @@ namespace Model.Objects
         }
         #endregion
 
+
         private void Move()
         {
             if (Goal != null)
@@ -129,9 +130,11 @@ namespace Model.Objects
             {
                 EventArgs ex = new EventArgs();
                 if (RemoveMe != null)
+                {
                     RemoveMe(this, ex);
-            }
+                }
 
+            }
         }
 
 
@@ -165,17 +168,20 @@ namespace Model.Objects
 
             Person goal = null;
             int minDistance = Int32.MaxValue;
-            foreach (Person person in Persons)
-            {
-                if (this.Equals(person)) continue;
-                if (Team == person.Team) continue;
-                int distanse = Math.Abs(X - person.X) + Math.Abs(Y - person.Y);
-                if (minDistance > distanse)
+            try {
+                foreach (Person person in Persons)
                 {
-                    minDistance = distanse;
-                    goal = person;
+                    if (this.Equals(person)) continue;
+                    if (Team == person.Team) continue;
+                    int distanse = Math.Abs(X - person.X) + Math.Abs(Y - person.Y);
+                    if (minDistance > distanse)
+                    {
+                        minDistance = distanse;
+                        goal = person;
+                    }
                 }
             }
+            catch (Exception e) { }
             return goal;
         }
 

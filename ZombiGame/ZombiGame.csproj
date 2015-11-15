@@ -138,6 +138,11 @@
     <Resource Include="Images\man.gif" />
     <Resource Include="Images\Zomb.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Sounds\get_hit3.mp3" />
+    <Content Include="Sounds\win human.mp3" />
+    <Content Include="Sounds\Zombie win.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

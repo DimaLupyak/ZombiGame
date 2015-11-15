@@ -18,15 +18,15 @@ namespace Model
 
         private static readonly Object lockObject = new Object();
         private static Map instance = null;
-        private Map()
+        private Map(int size)
         {
             MapArias = new ObservableCollection<MapArea>();
-            areas = GenMap(10, 10);
-            for (int i = 0; i < 10; i++)
+            areas = GenMap(size, size);
+            for (int i = 0; i < size; i++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < size; j++)
                 {
-                    MapArias.Add(new MapArea(i, j, areas[i,j]));
+                    MapArias.Add(new MapArea(i, j, areas[i,j], size));
         }
             }
         }
@@ -35,11 +35,11 @@ namespace Model
             get
             {
                 if (instance == null)
-                    instance = new Map();
+                    instance = new Map(10);
                 return instance;
             }
         }
-        #endregion+		rnd	null	System.Random
+        #endregion
 
         public AreaType[,] Areas
         {
