@@ -26,9 +26,9 @@ namespace ViewModel
             ButtonWidth = (int)(SystemParameters.WorkArea.Width - SystemParameters.WorkArea.Height) / 3; ;
         }
 
-        private void StartGameClickMethod()
+        public void StartGameClickMethod()
         {
-            World.Instance.ToString();
+            World.StartGame();
         }
         private void ExitClickMethod()
         {

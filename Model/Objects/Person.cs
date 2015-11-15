@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Model.EventArgument;
 using System.Drawing;
+using PathFinder;
 using Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace Model.Objects
+namespace Model.Objects 
 {
     public class Person : GameObject, INotifyPropertyChanged
     {
@@ -24,13 +25,12 @@ namespace Model.Objects
         protected int mana;
         protected int range;
         protected AttackStyle attackStyle;
-        protected Vektor vektor;
+        private bool whatToDo = false;
 
         #endregion
         #region Properties
         public Side Team { get; set; }
         public Person Goal { get; set; }
-        public int Size { get; private set; }
         new public int X
         {
             get { return x; }
@@ -52,18 +52,6 @@ namespace Model.Objects
 
             }
         }
-
-        public Vektor Vektor
-        {
-            get { return vektor; }
-            set
-            {
-                vektor = value;
-                OnPropertyChanged("Vektor");
-
-            }
-        }
-
         public int HelthPoint
         {
             get { return helthPoint; }
@@ -75,120 +63,101 @@ namespace Model.Objects
             }
         }
 
+        
 
-
-        public Person(int helthPoint, int x, int y, Side team)
+        public Person(int helthPoint, int x, int y, Side team) 
         {
             this.HelthPoint = helthPoint;
             this.x = x;
             this.y = y;
             this.Team = team;
-            this.damage = 2;
-            range = 5;
-            Size = (int)SystemInformation.VirtualScreen.Height / 20;
-
         }
 
-        private bool isAlive()
-        {
+        private bool isAlive() {
             if (HelthPoint <= 0)
             {
                 return false;
             }
             else
                 return true;
-
+           
         }
         #endregion
-
-
-        private void Move()
+        /*private void Move(ObservableCollection<Person> Persons)
         {
-            if (Goal != null)
+            List<Point> CurentPoints = new List<Point>();
+            int minCount = 1000;
+            Point bestStep = new Point(this.X, this.Y);
+            foreach(Person person in Persons)
             {
-                List<Point> CurentPoints = new List<Point>();
-                CurentPoints = FindWay.FindPath(World.Instance.Map.Areas, new Point(X, Y), new Point(Goal.X, Goal.Y));
-                try
+                if ((this.x != person.x) && (person.y != this.y) && this.team != person.team)
                 {
-                    Point bestStep = CurentPoints[1];
-                    X = bestStep.X;
-                    Y = bestStep.Y;
+                    Map map = Map.Instance;
+
+                    CurentPoints = FindWay.FindPath(map.ways, new Point(this.x, this.y), new Point(person.x, person.y));
+                    if (CurentPoints == null) break;
+                    if (CurentPoints.Count != 0 && CurentPoints.Count < minCount)
+                    {
+                        bestStep = CurentPoints[0];
+                    }
                 }
-                catch (Exception e) { }
             }
 
+            //Map.Instance.ways[this.X, this.Y] = 0;
+            //Map.Instance.ways[bestStep.X, bestStep.Y] = 1;
 
+            this.X = bestStep.X;
+            this.Y = bestStep.Y;
+        }*/
+        private void Move()
+        {
+            if(Goal!=null)
+            {
+                if (X > Goal.X)
+                {
+                    X--;
         }
+                else if (X < Goal.X)
+                {
+                    X++;
+                }
+                if (Y > Goal.Y)
+                {
+                    Y--;
+                }
+                else if (Y < Goal.Y)
+                {
+                    Y++;
+                }
 
+                if((X + 10  == Goal.X) || (Y + 10 == Goal.Y) || (X - 10 == Goal.X) || (Y - 10 == Goal.Y))
+                {
+                    whatToDo = true;
+                }
+            }
+        }
         public event EventHandler<EnemyAttack_Event> AttackEnemy;
+
         public void TakingDamage(object sender, EnemyAttack_Event e)
         {
             int realDamage = e.getEnemyDamage() - armor / 10;
             HelthPoint -= realDamage;
-
-            if (HelthPoint <= 0)
-            {
-                EventArgs ex = new EventArgs();
-                if (RemoveMe != null)
-                {
-                    RemoveMe(this, ex);
-                }
-
-            }
         }
 
 
 
-        public void Live(Object stateInfo)
+        public void Live()
         {
-            while (HelthPoint >= 0)
+            while (isAlive())
             {
-                //if(Goal == null)
-                //{
-                Goal = FindGoal(World.Instance.Persons);
-                //}
-                if (Goal != null)
-                {
-                    if (Math.Abs(X - Goal.X) < range && Math.Abs(Y - Goal.Y) < range)
-                    {
-                        AttackEnemy += Goal.TakingDamage;
-                        AttackEnemy(this, new EnemyAttack_Event(damage));
-                    }
-                    else
-                    {
-                        Move();
-                    }
-                }
-                Thread.Sleep(100);
+                Move(World.Instance.Persons);
             }
-        }
-
-        private Person FindGoal(ObservableCollection<Person> Persons)
-        {
-
-            Person goal = null;
-            int minDistance = Int32.MaxValue;
-            try {
-                foreach (Person person in Persons)
-                {
-                    if (this.Equals(person)) continue;
-                    if (Team == person.Team) continue;
-                    int distanse = Math.Abs(X - person.X) + Math.Abs(Y - person.Y);
-                    if (minDistance > distanse)
-                    {
-                        minDistance = distanse;
-                        goal = person;
-                    }
-                }
-            }
-            catch (Exception e) { }
             return goal;
         }
 
         #region Implement INotyfyPropertyChanged members
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public event EventHandler RemoveMe;
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
