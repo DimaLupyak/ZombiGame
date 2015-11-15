@@ -59,13 +59,12 @@
                         <Image gif:ImageBehavior.AnimatedSource="{Binding Team, ConverterParameter=Type, Converter={StaticResource personImageConvertor}}"
                                Canvas.Top="{Binding Y, ConverterParameter=Y , Converter={StaticResource personImageConvertor}}" 
                                Canvas.Left="{Binding X, ConverterParameter=X , Converter={StaticResource personImageConvertor}}" 
-                               Width="{Binding Size}" Height="{Binding Size}" >                            
+                               Width="{Binding Size}" Height="{Binding Size}">                            
                         </Image>
                         <ProgressBar Value="{Binding HelthPoint}" Height="5" Width="{Binding Size}"
                             Canvas.Top="{Binding Y, ConverterParameter=Y , Converter={StaticResource personImageConvertor}}"
                             Canvas.Left="{Binding X, ConverterParameter=X , Converter={StaticResource personImageConvertor}}"
-                                     Opacity="0.8"
-                                     Foreground="{Binding Team, ConverterParameter=Side, Converter={StaticResource personImageConvertor}}">
+                                     Opacity="0.8" Foreground="{Binding Team, ConverterParameter=Side , Converter={StaticResource personImageConvertor}}">
                             
                         </ProgressBar>
                     </Canvas>
