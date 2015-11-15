@@ -26,12 +26,12 @@ namespace Model
         }
 
         #endregion
-        public MapArea(int x, int y, AreaType type)
+        public MapArea(int x, int y, AreaType type, int mapSize)
         {
             X = x;
             Y = y;
             AreaType = type;
-            Size = (int)SystemInformation.VirtualScreen.Height / 10;
+            Size = (int)SystemInformation.VirtualScreen.Height / mapSize;
         }
     }
 }

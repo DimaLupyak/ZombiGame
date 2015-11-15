@@ -15,10 +15,11 @@ namespace Model
     {
 
 
-       // delegate void Live();
+        // delegate void Live();
 
         private static readonly Object lockObject = new Object();
         private static World instance = null;
+        private bool flag = true;
 
         public Map Map { get; set; }
         public ObservableCollection<Person> Persons { get; set; }
@@ -27,14 +28,53 @@ namespace Model
             Map = Map.Instance;
             Persons = new ObservableCollection<Person>();
 
-            CreateUnite();
-
-            
+            CreateUnite(20);
         }
-        
+        private int sideCount = 25;
+        private int man = 0;
+        private int zombe = 0;
+        public int Vinner { get; set; }
+
+        private void checkPersonList(ObservableCollection<Person> pers)
+        {
+            try
+            {
+                lock (lockObject)
+                {
+                    if (flag)
+                    {
+                        int c = 0;
+                        int k = 0;
+                        foreach (Person person in pers)
+                        {
+                            if (person.Team.ToString() == "Right") c++;
+                            if (person.Team.ToString() == "Left") k++;
+                        }
+                        if (c == pers.Count)
+                        {
+                            
+                            MessageBox.Show("Zombies winner!");
+
+                            flag = false;
+                        }
+                        if (k == pers.Count)
+                        {
+                            
+                            MessageBox.Show("Humans winner!");
+                            flag = false;
+                        }
+                    }
+                 }
+             }catch (Exception e) { }
+        }
+   
+
         private void RemoveUnitEvent(object sender, EventArgs e)
         {
-            Application.Current.Dispatcher.BeginInvoke(new Func<bool>(() => Persons.Remove((Person)sender)));   
+            Application.Current.Dispatcher.BeginInvoke(new Func<bool>(() => Persons.Remove((Person)sender)));
+            checkPersonList(Persons);
+            
+
         }
 
         public void StartGame()
@@ -42,12 +82,12 @@ namespace Model
             ThreadManager.StartSread(Persons);
         }
 
-        public void CreateUnite()
+        public void CreateUnite(int sideCount)
         {
             Random rnd = new Random();
             int x;
             int y;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < sideCount; i++)
             {
                 do
                 {
@@ -77,7 +117,7 @@ namespace Model
                 if (instance == null)
                     instance = new World();
                 return instance;
-               
+
             }
         }
         #endregion
