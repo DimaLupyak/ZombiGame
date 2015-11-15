@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace ViewModel
 {
-    public class Command : ICommand
+    class Command : ICommand
     {
         #region Constructor
 

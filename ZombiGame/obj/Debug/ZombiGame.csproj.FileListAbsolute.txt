@@ -106,8 +106,6 @@ C:\Users\Дима\Desktop\Hackaton\ZombiGame\obj\Debug\ZombiGame.Properties.Reso
 C:\Users\Дима\Desktop\Hackaton\ZombiGame\obj\Debug\ZombiGame.csproj.GenerateResource.Cache
 C:\Users\Дима\Desktop\Hackaton\ZombiGame\obj\Debug\ZombiGame_Content.g.cs
 D:\Programming\VisualStudioProjects\ZombieGame\ZombiGame\bin\Debug\ZombiGame.exe.config
-D:\Programming\VisualStudioProjects\ZombieGame\ZombiGame\obj\Debug\ZombiGame.exe
-D:\Programming\VisualStudioProjects\ZombieGame\ZombiGame\obj\Debug\ZombiGame.pdb
 D:\Programming\VisualStudioProjects\ZombieGame\ZombiGame\bin\Debug\ZombiGame.exe
 D:\Programming\VisualStudioProjects\ZombieGame\ZombiGame\bin\Debug\ZombiGame.pdb
 D:\Programming\VisualStudioProjects\ZombieGame\ZombiGame\bin\Debug\Model.dll
@@ -127,3 +125,5 @@ D:\Programming\VisualStudioProjects\ZombieGame\ZombiGame\obj\Debug\MainWindow.ba
 D:\Programming\VisualStudioProjects\ZombieGame\ZombiGame\obj\Debug\ZombiGame.g.resources
 D:\Programming\VisualStudioProjects\ZombieGame\ZombiGame\obj\Debug\ZombiGame.Properties.Resources.resources
 D:\Programming\VisualStudioProjects\ZombieGame\ZombiGame\obj\Debug\ZombiGame.csproj.GenerateResource.Cache
+D:\Programming\VisualStudioProjects\ZombieGame\ZombiGame\obj\Debug\ZombiGame.exe
+D:\Programming\VisualStudioProjects\ZombieGame\ZombiGame\obj\Debug\ZombiGame.pdb

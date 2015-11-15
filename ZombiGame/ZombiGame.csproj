@@ -129,8 +129,10 @@
     <Resource Include="Images\Right.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\man.gif" />
-    <Resource Include="Images\Zomb.gif" />
+    <Resource Include="Images\Animation.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Human.gif" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\man.gif" />
